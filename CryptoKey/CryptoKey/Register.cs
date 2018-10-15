@@ -40,28 +40,38 @@ namespace CryptoKey
                 String password = tfpassword.Text;
                 String password2 = tfPassword2.Text;
 
-                if(email.Contains("@") && email.Contains(".") && !(username.Contains("@")))
+                if (email.Contains("@") && email.Contains(".") && !(username.Contains("@")))
                 {
-                    if(this.correctPassword(password))
+
+                    if (this.correctPassword(password))
                     {
-                        if(this.samePasswords(password, password2))
+
+                        if (this.samePasswords(password, password2))
                         {
+
                             bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
+                            Console.WriteLine("jaaaaaa");
                         }
+                        else
+                        {
+                            MessageBox.Show("Die beiden Passwörter stimmen nicht überein");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Das Passwort erfüllt nicht die vorgegebenen Bedienungen. Das Passwort muss" +
+                            "mindestens einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten. " +
+                            "Außerdem muss das Passwort eine Mindestlänge von 8 Zeichen haben!");
                     }
 
                 }
                 else
                 {
+                    MessageBox.Show("Ungültige Email Adresse oder Benutzername!");
+
 
                 }
 
-
-
-
-
-
-                
 
             }
             catch(Exception x)
@@ -72,10 +82,12 @@ namespace CryptoKey
 
         public bool correctPassword(String pw)
         {
-            if(pw.Any(char.IsUpper) && pw.Any(char.IsLower) && pw.All(char.IsDigit))
+            if(pw.Any(char.IsUpper) && pw.Any(char.IsLower) && pw.Any(c => char.IsDigit(c)) && pw.Length >= 8)
             {
+                
                 return true;
             }
+            
             return false;
         }
 
