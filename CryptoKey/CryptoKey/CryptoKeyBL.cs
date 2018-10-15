@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CryptoKey
 {
@@ -24,6 +25,7 @@ namespace CryptoKey
 
         public void Login(string username, string password)
         {
+            MessageBox.Show("login");
             string col = "username";
             if (username.Contains("@")){
                 col = "email";
@@ -31,7 +33,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "SELECT password " +
+                string comStr = "SELECT password, username, email " +
                                 "FROM UserTable " +
                                 "WHERE "+col+" = '"+username+"';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
@@ -42,7 +44,10 @@ namespace CryptoKey
                     if (reader.Read()){
                         if (reader["password"].Equals(password))
                         {
-                            Console.WriteLine("Erfolgreich verbunden");
+                            Username = reader["username"].ToString();
+                            Password = reader["password"].ToString();
+                            Email = reader["email"].ToString();
+                            MessageBox.Show(reader["email"].ToString());
                         } else
                         {
                             throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");

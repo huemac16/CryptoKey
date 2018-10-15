@@ -50,7 +50,7 @@ namespace CryptoKey
                         {
 
                             bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
-                            Console.WriteLine("jaaaaaa");
+
                         }
                         else
                         {

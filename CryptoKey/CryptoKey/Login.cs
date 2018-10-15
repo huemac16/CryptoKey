@@ -18,16 +18,6 @@ namespace CryptoKey
             InitializeComponent();
         }
 
-        private void btLogin_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bl.Login(tfUsername.Text, tfPassword.Text);
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         public void setVisible(bool b)
         {
@@ -40,6 +30,18 @@ namespace CryptoKey
             this.setVisible(false);
             r.setVisible(true);
 
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bl.Login(tfUsername.Text, tfPassword.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
