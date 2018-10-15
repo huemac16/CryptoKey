@@ -66,8 +66,22 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
-                Console.WriteLine("" + comStr);
+                string comStr = "SELECT username, email " +
+                                "FROM UserTable " +
+                                "WHERE username = '"+ username+ "' OR email = '" + email + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (email.Equals(reader["email"])) throw new Exception("Email ist bereits vergeben, wollen Sie stattdessen ihr Passwort zurücksetzen?");
+                        else throw new Exception("Dieser Username ist leider schon vergeben!");
+                    }
+                    con.Close();
+
+                }
+                comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
