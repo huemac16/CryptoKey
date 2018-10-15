@@ -50,7 +50,9 @@ namespace CryptoKey
                         {
 
                             bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
-
+                            MessageBox.Show("Ihr Account wurde erfolgreich erstellt");
+                            this.setVisible(false);
+                            ancestor.setVisible(true);
                         }
                         else
                         {

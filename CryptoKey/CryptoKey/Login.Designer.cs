@@ -69,6 +69,7 @@
             this.tfPassword.Name = "tfPassword";
             this.tfPassword.Size = new System.Drawing.Size(530, 31);
             this.tfPassword.TabIndex = 3;
+            this.tfPassword.UseSystemPasswordChar = true;
             // 
             // btRegister
             // 
