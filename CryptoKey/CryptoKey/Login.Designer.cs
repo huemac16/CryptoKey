@@ -74,6 +74,7 @@
             this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Anmelden";
             this.btLogin.UseVisualStyleBackColor = true;
+            
             // 
             // btRegister
             // 
