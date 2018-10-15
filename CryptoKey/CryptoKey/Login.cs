@@ -22,7 +22,7 @@ namespace CryptoKey
         {
             try
             {
-                bl.LoginPerUsername(tfUsername.Text, tfPassword.Text);
+                bl.Login(tfUsername.Text, tfPassword.Text);
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

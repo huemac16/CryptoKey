@@ -22,14 +22,18 @@ namespace CryptoKey
         public string Email { get; set; }
 
 
-        public void LoginPerUsername(string username, string password)
+        public void Login(string username, string password)
         {
+            string col = "username";
+            if (username.Contains("@")){
+                col = "email";
+            }
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = "SELECT password " +
                                 "FROM UserTable " +
-                                "WHERE username = '"+username+"';";
+                                "WHERE "+col+" = '"+username+"';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -41,25 +45,42 @@ namespace CryptoKey
                             Console.WriteLine("Erfolgreich verbunden");
                         } else
                         {
-                            throw new Exception("Passwort stimmt nicht mit dem Username überein!");
+                            throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
                         }
                     } else
                     {
-                        throw new Exception("Username ist nicht vorhanden!");
+                        throw new Exception("Username/Email ist nicht vorhanden!");
                     }
                     reader.Close();
                     con.Close();
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!"+ex.StackTrace);
+                throw new Exception("Fehler beim Verbinden zur Datenbank!");
             }
         }
 
-        public void LoginPerEmail(string email, string password)
+        public void Register(string username, string email, string password)
         {
-
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "INSERT INTO dept VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!");
+            }
         }
+
+
     }
 }
