@@ -35,13 +35,58 @@ namespace CryptoKey
         private void btRegister_Click(object sender, EventArgs e)
         {
             try{
-                bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
+                String username = tfUsername.Text;
+                String email = tfEmail.Text;
+                String password = tfpassword.Text;
+                String password2 = tfPassword2.Text;
+
+                if(email.Contains("@") && email.Contains(".") && !(username.Contains("@")))
+                {
+                    if(this.correctPassword(password))
+                    {
+                        if(this.samePasswords(password, password2))
+                        {
+                            bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
+                        }
+                    }
+
+                }
+                else
+                {
+
+                }
+
+
+
+
+
+
+                
 
             }
             catch(Exception x)
             {
                 MessageBox.Show("" + x.Message);
             }
+        }
+
+        public bool correctPassword(String pw)
+        {
+            if(pw.Any(char.IsUpper) && pw.Any(char.IsLower) && pw.All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool samePasswords(String pw1, String pw2)
+        {
+            if(pw1.Equals(pw2))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

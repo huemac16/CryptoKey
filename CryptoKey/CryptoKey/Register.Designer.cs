@@ -84,6 +84,7 @@
             this.tfpassword.Name = "tfpassword";
             this.tfpassword.Size = new System.Drawing.Size(277, 20);
             this.tfpassword.TabIndex = 5;
+            this.tfpassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -99,6 +100,7 @@
             this.tfPassword2.Name = "tfPassword2";
             this.tfPassword2.Size = new System.Drawing.Size(277, 20);
             this.tfPassword2.TabIndex = 7;
+            this.tfPassword2.UseSystemPasswordChar = true;
             // 
             // btRegister
             // 
