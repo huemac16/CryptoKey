@@ -12,11 +12,10 @@ namespace CryptoKey
 {
     public partial class Login : Form
     {
+        private CryptoKeyBL bl = new CryptoKeyBL();
         public Login()
         {
             InitializeComponent();
         }
-
-     
     }
 }
