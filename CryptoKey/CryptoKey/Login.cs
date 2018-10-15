@@ -17,6 +17,7 @@ namespace CryptoKey
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         private void btLogin_Click(object sender, EventArgs e)
         {
@@ -28,5 +29,7 @@ namespace CryptoKey
                 MessageBox.Show(ex.Message);
             }
         }
+=======
+>>>>>>> a55a73b177c1183a6c13de488d2f8030a432b0fc
     }
 }

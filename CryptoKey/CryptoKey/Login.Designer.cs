@@ -38,71 +38,64 @@
             // 
             // lbUsername
             // 
-            this.lbUsername.Location = new System.Drawing.Point(184, 96);
-            this.lbUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbUsername.Location = new System.Drawing.Point(92, 50);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(172, 33);
+            this.lbUsername.Size = new System.Drawing.Size(86, 17);
             this.lbUsername.TabIndex = 0;
             this.lbUsername.Text = "Benutzername";
             // 
             // tfUsername
             // 
-            this.tfUsername.Location = new System.Drawing.Point(190, 137);
-            this.tfUsername.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tfUsername.Location = new System.Drawing.Point(95, 71);
             this.tfUsername.Name = "tfUsername";
-            this.tfUsername.Size = new System.Drawing.Size(530, 31);
+            this.tfUsername.Size = new System.Drawing.Size(267, 20);
             this.tfUsername.TabIndex = 1;
             // 
             // lbPassword
             // 
-            this.lbPassword.Location = new System.Drawing.Point(184, 248);
-            this.lbPassword.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbPassword.Location = new System.Drawing.Point(92, 129);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(172, 33);
+            this.lbPassword.Size = new System.Drawing.Size(86, 17);
             this.lbPassword.TabIndex = 2;
             this.lbPassword.Text = "passwort";
             // 
             // tfPassword
             // 
-            this.tfPassword.Location = new System.Drawing.Point(190, 310);
-            this.tfPassword.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tfPassword.Location = new System.Drawing.Point(95, 161);
             this.tfPassword.Name = "tfPassword";
-            this.tfPassword.Size = new System.Drawing.Size(530, 31);
+            this.tfPassword.Size = new System.Drawing.Size(267, 20);
             this.tfPassword.TabIndex = 3;
             // 
             // btLogin
             // 
-            this.btLogin.Location = new System.Drawing.Point(190, 417);
-            this.btLogin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btLogin.Location = new System.Drawing.Point(95, 217);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(150, 44);
+            this.btLogin.Size = new System.Drawing.Size(75, 23);
             this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Anmelden";
             this.btLogin.UseVisualStyleBackColor = true;
-            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
+            
             // 
             // btRegister
             // 
-            this.btRegister.Location = new System.Drawing.Point(572, 415);
-            this.btRegister.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btRegister.Location = new System.Drawing.Point(286, 216);
             this.btRegister.Name = "btRegister";
-            this.btRegister.Size = new System.Drawing.Size(150, 44);
+            this.btRegister.Size = new System.Drawing.Size(75, 23);
             this.btRegister.TabIndex = 5;
             this.btRegister.Text = "Registrieren";
             this.btRegister.UseVisualStyleBackColor = true;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 546);
+            this.ClientSize = new System.Drawing.Size(451, 284);
             this.Controls.Add(this.btRegister);
             this.Controls.Add(this.btLogin);
             this.Controls.Add(this.tfPassword);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.tfUsername);
             this.Controls.Add(this.lbUsername);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Login";
             this.Text = "Form1";
             this.ResumeLayout(false);
