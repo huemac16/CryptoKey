@@ -66,18 +66,20 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "INSERT INTO dept VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
+                string comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
+                Console.WriteLine("" + comStr);
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
-                    cmd.ExecuteNonQuery();
                     con.Close();
+                    
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!");
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+                
             }
         }
 

@@ -74,7 +74,6 @@
             this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Anmelden";
             this.btLogin.UseVisualStyleBackColor = true;
-            
             // 
             // btRegister
             // 
@@ -84,6 +83,7 @@
             this.btRegister.TabIndex = 5;
             this.btRegister.Text = "Registrieren";
             this.btRegister.UseVisualStyleBackColor = true;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // Login
             // 

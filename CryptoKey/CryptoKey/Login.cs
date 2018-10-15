@@ -28,5 +28,18 @@ namespace CryptoKey
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void setVisible(bool b)
+        {
+            this.SetVisibleCore(b);
+        }
+
+        private void btRegister_Click(object sender, EventArgs e)
+        {
+            Register r = new Register(this, bl);
+            this.setVisible(false);
+            r.setVisible(true);
+
+        }
     }
 }
