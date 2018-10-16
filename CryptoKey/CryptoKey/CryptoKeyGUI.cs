@@ -29,7 +29,7 @@ namespace CryptoKey
 
         private void btadd_Click(object sender, EventArgs e)
         {
-
+            bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text });
         }
 
         private void btdelete_Click(object sender, EventArgs e)
