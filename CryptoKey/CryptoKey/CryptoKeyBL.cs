@@ -18,7 +18,14 @@ namespace CryptoKey
                         "User ID=rotmac16;" +
                         "Password=$ck_RotHue#";
 
-        public ArrayList Accounts { get; set; }
+        private ArrayList accounts = new ArrayList();
+
+        public ArrayList Accounts
+        {
+            get { return accounts; }
+            set { accounts = value; }
+        }
+
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -59,6 +66,7 @@ namespace CryptoKey
                             }
                             Theme = reader["theme"].ToString().Equals("0");
                             German = reader["german"].ToString().Equals("1");
+                            InitAccounts();
                         } else
                         {
                             throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
@@ -74,6 +82,42 @@ namespace CryptoKey
             catch (SqlException)
             {
                 throw new Exception("Fehler beim Verbinden zur Datenbank!");
+            }
+        }
+
+        private void InitAccounts()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "SELECT * " +
+                                "FROM AccountTable " +
+                                "WHERE username = '" + Username + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        Account acc = new Account { Email = reader["email"].ToString(),
+                            Onlineuser = reader["onlineuser"].ToString(),
+                            Password = reader["password"].ToString(),
+                            Priority = reader["priority"].ToString()[0],
+                            Title = reader["title"].ToString(),
+                            Url = reader["url"].ToString(),
+                            marked = reader["marked"].ToString().Equals("1") };
+
+                        Accounts.Add(acc);
+                    }
+                }
+                    con.Close();
+     
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+
             }
         }
 

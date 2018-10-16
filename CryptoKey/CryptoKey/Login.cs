@@ -52,10 +52,14 @@ namespace CryptoKey
                 {
                     lbTest1.Text = "English";
                 }
+                foreach (Account acc in bl.Accounts)
+                {
+                    MessageBox.Show(acc.ToString());
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message+ex.StackTrace);
             }
         }
     }
