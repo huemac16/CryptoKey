@@ -62,7 +62,7 @@ namespace CryptoKey
                     else
                     {
                         MessageBox.Show("Das Passwort erfüllt nicht die vorgegebenen Bedienungen. Das Passwort muss" +
-                            "mindestens einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten. " +
+                            "mindestens einen Großbuchstaben, einen Kleinbuchstaben und mindestens eine Ziffer enthalten. " +
                             "Außerdem muss das Passwort eine Mindestlänge von 8 Zeichen haben!");
                     }
 
