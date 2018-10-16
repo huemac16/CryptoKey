@@ -258,6 +258,7 @@
             this.btlogout.TabIndex = 20;
             this.btlogout.Text = "Abmelden";
             this.btlogout.UseVisualStyleBackColor = true;
+            this.btlogout.Click += new System.EventHandler(this.btlogout_Click);
             // 
             // CryptoKeyGUI
             // 
@@ -284,6 +285,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CryptoKeyGUI";
             this.Text = "CryptoKeyGUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

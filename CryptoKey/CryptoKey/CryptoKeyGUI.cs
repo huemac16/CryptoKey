@@ -41,5 +41,19 @@ namespace CryptoKey
         {
             this.SetVisibleCore(b);
         }
+
+        private void btlogout_Click(object sender, EventArgs e)
+        {
+            bl.Logout();
+            this.setVisible(false);
+            ancestor.setVisible(true);
+
+        }
+
+        private void WindowClosing(object sender, FormClosingEventArgs e)
+        {
+            bl.Logout();
+            Dispose();
+        }
     }
 }
