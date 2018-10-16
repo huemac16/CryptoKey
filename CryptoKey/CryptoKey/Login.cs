@@ -43,7 +43,7 @@ namespace CryptoKey
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message+ex.StackTrace);
+                MessageBox.Show(ex.Message);
             }
         }
     }

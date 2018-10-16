@@ -38,6 +38,27 @@ namespace CryptoKey
             accounts.Add(acc);
         }
 
+        public void Logout()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = comStr = "UPDATE UserTable SET online = '1';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+
+            }
+        }
+
         public void Login(string username, string password)
         {
             string col = "username";
