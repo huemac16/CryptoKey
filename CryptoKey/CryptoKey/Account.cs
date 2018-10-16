@@ -15,6 +15,8 @@ namespace CryptoKey
         public string Url { get; set; }
         public char Priority { get; set; }
         public bool marked { get; set; }
+        public int id { get; set; }
+        
 
         public override string ToString()
         {
