@@ -49,6 +49,12 @@
     <Compile Include="Account.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="CryptoKeyBL.cs" />
+    <Compile Include="CryptoKeyGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CryptoKeyGUI.Designer.cs">
+      <DependentUpon>CryptoKeyGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="EncryptionHelper.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -64,6 +70,9 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CryptoKeyGUI.resx">
+      <DependentUpon>CryptoKeyGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
