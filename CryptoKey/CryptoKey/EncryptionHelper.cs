@@ -7,7 +7,7 @@ public static class EncryptionHelper
 {
     public static string Encrypt(string clearText)
     {
-        string EncryptionKey = "abc123";
+        string EncryptionKey = "Zebrahuf_88";
         byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
         using (Aes encryptor = Aes.Create())
         {
@@ -28,7 +28,7 @@ public static class EncryptionHelper
     }
     public static string Decrypt(string cipherText)
     {
-        string EncryptionKey = "abc123";
+        string EncryptionKey = "Zebrahuf_88";
         cipherText = cipherText.Replace(" ", "+");
         byte[] cipherBytes = Convert.FromBase64String(cipherText);
         using (Aes encryptor = Aes.Create())

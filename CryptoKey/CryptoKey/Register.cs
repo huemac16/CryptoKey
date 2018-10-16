@@ -48,8 +48,7 @@ namespace CryptoKey
 
                         if (this.samePasswords(password, password2))
                         {
-
-                            bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
+                            bl.Register(tfUsername.Text, tfEmail.Text, EncryptionHelper.Encrypt(tfpassword.Text));
                             MessageBox.Show("Ihr Account wurde erfolgreich erstellt");
                             this.setVisible(false);
                             ancestor.setVisible(true);

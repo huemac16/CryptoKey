@@ -52,7 +52,7 @@ namespace CryptoKey
                     
                     var reader = cmd.ExecuteReader();
                     if (reader.Read()){
-                        if (reader["password"].Equals(password))
+                        if (EncryptionHelper.Decrypt(reader["password"].ToString()).Equals(password))
                         {
                             Username = reader["username"].ToString();
                             Password = reader["password"].ToString();
