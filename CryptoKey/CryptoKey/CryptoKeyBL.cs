@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,13 @@ namespace CryptoKey
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public Color Color { get; set; }
+        public bool Theme { get; set; }
+        public bool German { get; set; }
 
 
         public void Login(string username, string password)
         {
-            MessageBox.Show("login");
             string col = "username";
             if (username.Contains("@")){
                 col = "email";
@@ -33,7 +36,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "SELECT password, username, email " +
+                string comStr = "SELECT * " +
                                 "FROM UserTable " +
                                 "WHERE "+col+" = '"+username+"';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
@@ -47,7 +50,15 @@ namespace CryptoKey
                             Username = reader["username"].ToString();
                             Password = reader["password"].ToString();
                             Email = reader["email"].ToString();
-                            MessageBox.Show(reader["email"].ToString());
+                            if (reader["color"].ToString().Equals(""))
+                            {
+                                Color = Color.FromArgb(0,51,204);
+                            } else
+                            {
+                                Color = CreateColFromStr(reader["color"].ToString());
+                            }
+                            Theme = reader["theme"].ToString().Equals("0");
+                            German = reader["german"].ToString().Equals("1");
                         } else
                         {
                             throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
@@ -64,6 +75,15 @@ namespace CryptoKey
             {
                 throw new Exception("Fehler beim Verbinden zur Datenbank!");
             }
+        }
+
+        private Color CreateColFromStr(string col)
+        {
+            string[] rgbStr = col.Split(',');
+            int r = Convert.ToInt32(rgbStr[0]);
+            int g = Convert.ToInt32(rgbStr[1]);
+            int b = Convert.ToInt32(rgbStr[2]);
+            return Color.FromArgb(r, g, b);
         }
 
         public void Register(string username, string email, string password)
@@ -86,7 +106,7 @@ namespace CryptoKey
                     con.Close();
 
                 }
-                comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,0);";
+                comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,1);";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();

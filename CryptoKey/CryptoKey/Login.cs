@@ -37,6 +37,21 @@ namespace CryptoKey
             try
             {
                 bl.Login(tfUsername.Text, tfPassword.Text);
+                pnTest1.BackColor = bl.Color;
+                if (bl.Theme)
+                {
+                    pnTest2.BackColor = Color.White;
+                } else
+                {
+                    pnTest2.BackColor = Color.Black;
+                }
+                if (bl.German)
+                {
+                    lbTest1.Text = "German";
+                } else
+                {
+                    lbTest1.Text = "English";
+                }
             }
             catch (Exception ex)
             {
