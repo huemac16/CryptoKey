@@ -33,6 +33,10 @@ namespace CryptoKey
         public bool Theme { get; set; }
         public bool German { get; set; }
 
+        public void add(Account acc)
+        {
+            accounts.Add(acc);
+        }
 
         public void Login(string username, string password)
         {
@@ -54,6 +58,7 @@ namespace CryptoKey
                     if (reader.Read()){
                         if (EncryptionHelper.Decrypt(reader["password"].ToString()).Equals(password))
                         {
+                            if(reader["online"].ToString().Equals("1")) throw new Exception("Sie sind bereits an einem anderen Gerät angemeldet!");
                             Username = reader["username"].ToString();
                             Password = reader["password"].ToString();
                             Email = reader["email"].ToString();
@@ -66,6 +71,12 @@ namespace CryptoKey
                             }
                             Theme = reader["theme"].ToString().Equals("0");
                             German = reader["german"].ToString().Equals("1");
+                            reader.Close();
+                            comStr = "UPDATE UserTable SET online = '1';";
+                            using(SqlCommand cmd2 = new SqlCommand(comStr, con))
+                            {
+                                cmd2.ExecuteNonQuery();
+                            }
                             InitAccounts();
                         } else
                         {
@@ -75,7 +86,6 @@ namespace CryptoKey
                     {
                         throw new Exception("Username/Email ist nicht vorhanden!");
                     }
-                    reader.Close();
                     con.Close();
                 }
             }
