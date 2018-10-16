@@ -43,7 +43,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "UPDATE UserTable SET online = '1';";
+                string comStr = comStr = "UPDATE UserTable SET online = '0';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
