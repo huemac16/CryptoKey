@@ -36,17 +36,18 @@
             this.btLogin = new System.Windows.Forms.Button();
             this.paBackground = new System.Windows.Forms.Panel();
             this.paDes = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lnLogIn = new System.Windows.Forms.Label();
             this.paBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbUsername
             // 
+            this.lbUsername.AutoSize = true;
             this.lbUsername.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lbUsername.Location = new System.Drawing.Point(368, 109);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(86, 25);
+            this.lbUsername.Size = new System.Drawing.Size(129, 24);
             this.lbUsername.TabIndex = 0;
             this.lbUsername.Text = "Benutzername";
             // 
@@ -64,11 +65,12 @@
             // 
             // lbPassword
             // 
+            this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lbPassword.Location = new System.Drawing.Point(368, 202);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(86, 26);
+            this.lbPassword.Size = new System.Drawing.Size(85, 24);
             this.lbPassword.TabIndex = 2;
             this.lbPassword.Text = "Passwort";
             // 
@@ -86,6 +88,7 @@
             // 
             // btRegister
             // 
+            this.btRegister.AutoSize = true;
             this.btRegister.BackColor = System.Drawing.Color.Transparent;
             this.btRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btRegister.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -99,6 +102,7 @@
             // 
             // btLogin
             // 
+            this.btLogin.AutoSize = true;
             this.btLogin.BackColor = System.Drawing.Color.Transparent;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btLogin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,9 +117,10 @@
             // 
             // paBackground
             // 
+            this.paBackground.AutoSize = true;
             this.paBackground.BackColor = System.Drawing.Color.Gainsboro;
             this.paBackground.Controls.Add(this.paDes);
-            this.paBackground.Controls.Add(this.label1);
+            this.paBackground.Controls.Add(this.lnLogIn);
             this.paBackground.Controls.Add(this.lbUsername);
             this.paBackground.Controls.Add(this.btRegister);
             this.paBackground.Controls.Add(this.btLogin);
@@ -124,11 +129,12 @@
             this.paBackground.Controls.Add(this.tfPassword);
             this.paBackground.Location = new System.Drawing.Point(-6, -1);
             this.paBackground.Name = "paBackground";
-            this.paBackground.Size = new System.Drawing.Size(682, 395);
+            this.paBackground.Size = new System.Drawing.Size(682, 409);
             this.paBackground.TabIndex = 7;
             // 
             // paDes
             // 
+            this.paDes.AutoSize = true;
             this.paDes.BackgroundImage = global::CryptoKey.Properties.Resources.bild;
             this.paDes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.paDes.Location = new System.Drawing.Point(4, 0);
@@ -136,15 +142,16 @@
             this.paDes.Size = new System.Drawing.Size(336, 406);
             this.paDes.TabIndex = 8;
             // 
-            // label1
+            // lnLogIn
             // 
-            this.label1.Font = new System.Drawing.Font("Roboto Th", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(445, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 49);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Log In";
+            this.lnLogIn.AutoSize = true;
+            this.lnLogIn.Font = new System.Drawing.Font("Roboto Th", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnLogIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.lnLogIn.Location = new System.Drawing.Point(445, 21);
+            this.lnLogIn.Name = "lnLogIn";
+            this.lnLogIn.Size = new System.Drawing.Size(119, 46);
+            this.lnLogIn.TabIndex = 7;
+            this.lnLogIn.Text = "Log In";
             // 
             // Login
             // 
@@ -158,6 +165,7 @@
             this.paBackground.ResumeLayout(false);
             this.paBackground.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -170,7 +178,7 @@
         private System.Windows.Forms.Button btRegister;
         private System.Windows.Forms.Button btLogin;
         private System.Windows.Forms.Panel paBackground;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lnLogIn;
         private System.Windows.Forms.Panel paDes;
     }
 }
