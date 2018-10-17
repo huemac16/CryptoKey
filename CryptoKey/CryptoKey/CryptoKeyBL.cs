@@ -35,12 +35,11 @@ namespace CryptoKey
 
         public void add(Account acc, ListBox list)
         {
+            acc.id = getNewID();
             accounts.Add(acc);
             update(list);
             try
             {
-                //if(acc.marked) cmd.Parameters.AddWithValue("@marked", '1');
-                //else cmd.Parameters.AddWithValue("@marked", '0');
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked) VALUES ('"+ Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + acc.Password + "','" + acc.Url + "','" + acc.Priority + "','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
@@ -54,7 +53,30 @@ namespace CryptoKey
             catch (SqlException ex)
             {
                 throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+            }
+        }
 
+        private int getNewID()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "SELECT MAX(id) "
+                               + "FROM AccountTable;";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+                    int max = Convert.ToInt32(reader["MAX[id]"]);
+                    con.Close();
+                    return max + 1;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
             }
         }
 
@@ -82,7 +104,7 @@ namespace CryptoKey
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
-
+                accounts.Clear();
             }
             catch (SqlException ex)
             {
@@ -130,7 +152,6 @@ namespace CryptoKey
                             {
                                 cmd2.ExecuteNonQuery();
                             }
-                            InitAccounts();
                         } else
                         {
                             throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
@@ -148,7 +169,7 @@ namespace CryptoKey
             }
         }
 
-        private void InitAccounts()
+        public void InitAccounts(ListBox list)
         {
             try
             {
@@ -163,7 +184,9 @@ namespace CryptoKey
                     while (reader.Read())
                     {
 
-                        Account acc = new Account { Email = reader["email"].ToString(),
+                        Account acc = new Account {
+                            id = Convert.ToInt32(reader["id"]),
+                            Email = reader["email"].ToString(),
                             Onlineuser = reader["onlineuser"].ToString(),
                             Password = reader["password"].ToString(),
                             Priority = reader["priority"].ToString()[0],
@@ -174,8 +197,8 @@ namespace CryptoKey
                         Accounts.Add(acc);
                     }
                 }
-                    con.Close();
-     
+                con.Close();
+                update(list);
             }
             catch (SqlException ex)
             {

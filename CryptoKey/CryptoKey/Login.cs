@@ -46,5 +46,11 @@ namespace CryptoKey
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void ClearTF()
+        {
+            tfUsername.Text = "";
+            tfPassword.Text = "";
+        }
     }
 }
