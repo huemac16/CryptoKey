@@ -33,32 +33,27 @@ namespace CryptoKey
         public bool Theme { get; set; }
         public bool German { get; set; }
 
-        public void add(Account acc)
+        public void add(Account acc, ListBox list)
         {
             accounts.Add(acc);
+            update(list);
             try
             {
+                //if(acc.marked) cmd.Parameters.AddWithValue("@marked", '1');
+                //else cmd.Parameters.AddWithValue("@marked", '0');
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,prioriy,marked) VALUES (@username,@title,@email,@onlineuser,@password,@url,@priority,@marked)";
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked) VALUES ('"+ Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + acc.Password + "','" + acc.Url + "','" + acc.Priority + "','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
-                    cmd.Parameters.AddWithValue("@username", Username);
-                    cmd.Parameters.AddWithValue("@title", acc.Title);
-                    cmd.Parameters.AddWithValue("@email", acc.Email);
-                    cmd.Parameters.AddWithValue("@onlineuser", acc.Onlineuser);
-                    cmd.Parameters.AddWithValue("@password", acc.Password);
-                    cmd.Parameters.AddWithValue("@url", acc.Url);
-                    cmd.Parameters.AddWithValue("@priority", acc.Priority);
-                    cmd.Parameters.AddWithValue("@marked", acc.marked);
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    con.Close();
                 }
-                con.Close();
 
             }
             catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
 
             }
         }
@@ -91,7 +86,7 @@ namespace CryptoKey
             }
             catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
 
             }
         }
@@ -147,9 +142,9 @@ namespace CryptoKey
                     con.Close();
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!");
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
             }
         }
 
@@ -184,7 +179,7 @@ namespace CryptoKey
             }
             catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
 
             }
         }
@@ -229,7 +224,7 @@ namespace CryptoKey
             }
             catch (SqlException ex)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
                 
             }
         }

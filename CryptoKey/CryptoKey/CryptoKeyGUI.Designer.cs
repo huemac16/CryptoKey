@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.AccountList = new System.Windows.Forms.ListBox();
             this.btchange = new System.Windows.Forms.Button();
             this.btadd = new System.Windows.Forms.Button();
             this.btdelete = new System.Windows.Forms.Button();
@@ -46,26 +46,26 @@
             this.rbM = new System.Windows.Forms.RadioButton();
             this.rbL = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbmarked = new System.Windows.Forms.CheckBox();
             this.btlogout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // AccountList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(40, 44);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(480, 485);
-            this.listBox1.TabIndex = 1;
+            this.AccountList.FormattingEnabled = true;
+            this.AccountList.ItemHeight = 25;
+            this.AccountList.Location = new System.Drawing.Point(80, 85);
+            this.AccountList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AccountList.Name = "AccountList";
+            this.AccountList.Size = new System.Drawing.Size(956, 929);
+            this.AccountList.TabIndex = 1;
             // 
             // btchange
             // 
-            this.btchange.Location = new System.Drawing.Point(528, 377);
-            this.btchange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btchange.Location = new System.Drawing.Point(1056, 725);
+            this.btchange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btchange.Name = "btchange";
-            this.btchange.Size = new System.Drawing.Size(133, 27);
+            this.btchange.Size = new System.Drawing.Size(266, 52);
             this.btchange.TabIndex = 2;
             this.btchange.Text = "Ändern";
             this.btchange.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@
             // 
             // btadd
             // 
-            this.btadd.Location = new System.Drawing.Point(673, 377);
-            this.btadd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btadd.Location = new System.Drawing.Point(1346, 725);
+            this.btadd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btadd.Name = "btadd";
-            this.btadd.Size = new System.Drawing.Size(133, 27);
+            this.btadd.Size = new System.Drawing.Size(266, 52);
             this.btadd.TabIndex = 3;
             this.btadd.Text = "Hinzufügen";
             this.btadd.UseVisualStyleBackColor = true;
@@ -84,10 +84,10 @@
             // 
             // btdelete
             // 
-            this.btdelete.Location = new System.Drawing.Point(528, 435);
-            this.btdelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btdelete.Location = new System.Drawing.Point(1056, 837);
+            this.btdelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btdelete.Name = "btdelete";
-            this.btdelete.Size = new System.Drawing.Size(133, 27);
+            this.btdelete.Size = new System.Drawing.Size(266, 52);
             this.btdelete.TabIndex = 4;
             this.btdelete.Text = "Löschen";
             this.btdelete.UseVisualStyleBackColor = true;
@@ -95,107 +95,107 @@
             // 
             // tftitle
             // 
-            this.tftitle.Location = new System.Drawing.Point(534, 82);
-            this.tftitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tftitle.Location = new System.Drawing.Point(1068, 158);
+            this.tftitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tftitle.Name = "tftitle";
-            this.tftitle.Size = new System.Drawing.Size(272, 20);
+            this.tftitle.Size = new System.Drawing.Size(540, 31);
             this.tftitle.TabIndex = 5;
             this.tftitle.Text = "Yahoo";
             // 
             // tfemail
             // 
-            this.tfemail.Location = new System.Drawing.Point(534, 120);
-            this.tfemail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tfemail.Location = new System.Drawing.Point(1068, 231);
+            this.tfemail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tfemail.Name = "tfemail";
-            this.tfemail.Size = new System.Drawing.Size(272, 20);
+            this.tfemail.Size = new System.Drawing.Size(540, 31);
             this.tfemail.TabIndex = 6;
             this.tfemail.Text = "dev-yahoo@gmx.at";
             // 
             // tfpassword
             // 
-            this.tfpassword.Location = new System.Drawing.Point(534, 160);
-            this.tfpassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tfpassword.Location = new System.Drawing.Point(1068, 308);
+            this.tfpassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tfpassword.Name = "tfpassword";
-            this.tfpassword.Size = new System.Drawing.Size(272, 20);
+            this.tfpassword.Size = new System.Drawing.Size(540, 31);
             this.tfpassword.TabIndex = 7;
             this.tfpassword.Text = "yahooPW";
             this.tfpassword.UseSystemPasswordChar = true;
             // 
             // tfusername
             // 
-            this.tfusername.Location = new System.Drawing.Point(534, 200);
-            this.tfusername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tfusername.Location = new System.Drawing.Point(1068, 385);
+            this.tfusername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tfusername.Name = "tfusername";
-            this.tfusername.Size = new System.Drawing.Size(272, 20);
+            this.tfusername.Size = new System.Drawing.Size(540, 31);
             this.tfusername.TabIndex = 8;
             this.tfusername.Text = "Marcel";
             // 
             // tfurl
             // 
-            this.tfurl.Location = new System.Drawing.Point(534, 238);
-            this.tfurl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tfurl.Location = new System.Drawing.Point(1068, 458);
+            this.tfurl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tfurl.Name = "tfurl";
-            this.tfurl.Size = new System.Drawing.Size(272, 20);
+            this.tfurl.Size = new System.Drawing.Size(540, 31);
             this.tfurl.TabIndex = 9;
             this.tfurl.Text = "https://www.yahoo.com";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(534, 106);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(1068, 204);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 10;
             this.label1.Text = "Email";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(534, 145);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(1068, 279);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(100, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Passwort";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(532, 185);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(1064, 356);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(110, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Username";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(532, 68);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(1064, 131);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.Size = new System.Drawing.Size(53, 25);
             this.label4.TabIndex = 13;
             this.label4.Text = "Title";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(534, 223);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(1068, 429);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 13);
+            this.label5.Size = new System.Drawing.Size(39, 25);
             this.label5.TabIndex = 14;
             this.label5.Text = "Url";
             // 
             // rbH
             // 
             this.rbH.AutoSize = true;
-            this.rbH.Location = new System.Drawing.Point(42, 25);
-            this.rbH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbH.Location = new System.Drawing.Point(84, 48);
+            this.rbH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbH.Name = "rbH";
-            this.rbH.Size = new System.Drawing.Size(49, 17);
+            this.rbH.Size = new System.Drawing.Size(90, 29);
             this.rbH.TabIndex = 15;
             this.rbH.Text = "hoch";
             this.rbH.UseVisualStyleBackColor = true;
@@ -204,10 +204,10 @@
             // 
             this.rbM.AutoSize = true;
             this.rbM.Checked = true;
-            this.rbM.Location = new System.Drawing.Point(42, 44);
-            this.rbM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbM.Location = new System.Drawing.Point(84, 85);
+            this.rbM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbM.Name = "rbM";
-            this.rbM.Size = new System.Drawing.Size(49, 17);
+            this.rbM.Size = new System.Drawing.Size(94, 29);
             this.rbM.TabIndex = 16;
             this.rbM.TabStop = true;
             this.rbM.Text = "mittel";
@@ -216,10 +216,10 @@
             // rbL
             // 
             this.rbL.AutoSize = true;
-            this.rbL.Location = new System.Drawing.Point(42, 62);
-            this.rbL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbL.Location = new System.Drawing.Point(84, 119);
+            this.rbL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbL.Name = "rbL";
-            this.rbL.Size = new System.Drawing.Size(56, 17);
+            this.rbL.Size = new System.Drawing.Size(108, 29);
             this.rbL.TabIndex = 17;
             this.rbL.Text = "niedrig";
             this.rbL.UseVisualStyleBackColor = true;
@@ -229,32 +229,21 @@
             this.groupBox1.Controls.Add(this.rbH);
             this.groupBox1.Controls.Add(this.rbL);
             this.groupBox1.Controls.Add(this.rbM);
-            this.groupBox1.Location = new System.Drawing.Point(536, 266);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(1072, 512);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(144, 96);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(288, 185);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Priorität";
             // 
-            // cbmarked
-            // 
-            this.cbmarked.AutoSize = true;
-            this.cbmarked.Location = new System.Drawing.Point(712, 311);
-            this.cbmarked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbmarked.Name = "cbmarked";
-            this.cbmarked.Size = new System.Drawing.Size(63, 17);
-            this.cbmarked.TabIndex = 19;
-            this.cbmarked.Text = "markiert";
-            this.cbmarked.UseVisualStyleBackColor = true;
-            // 
             // btlogout
             // 
-            this.btlogout.Location = new System.Drawing.Point(673, 7);
-            this.btlogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btlogout.Location = new System.Drawing.Point(1346, 13);
+            this.btlogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btlogout.Name = "btlogout";
-            this.btlogout.Size = new System.Drawing.Size(132, 23);
+            this.btlogout.Size = new System.Drawing.Size(264, 44);
             this.btlogout.TabIndex = 20;
             this.btlogout.Text = "Abmelden";
             this.btlogout.UseVisualStyleBackColor = true;
@@ -262,11 +251,10 @@
             // 
             // CryptoKeyGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 552);
+            this.ClientSize = new System.Drawing.Size(1698, 1062);
             this.Controls.Add(this.btlogout);
-            this.Controls.Add(this.cbmarked);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -281,8 +269,8 @@
             this.Controls.Add(this.btdelete);
             this.Controls.Add(this.btadd);
             this.Controls.Add(this.btchange);
-            this.Controls.Add(this.listBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.AccountList);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CryptoKeyGUI";
             this.Text = "CryptoKeyGUI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowClosing);
@@ -295,7 +283,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox AccountList;
         private System.Windows.Forms.Button btchange;
         private System.Windows.Forms.Button btadd;
         private System.Windows.Forms.Button btdelete;
@@ -313,7 +301,6 @@
         private System.Windows.Forms.RadioButton rbM;
         private System.Windows.Forms.RadioButton rbL;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbmarked;
         private System.Windows.Forms.Button btlogout;
     }
 }
