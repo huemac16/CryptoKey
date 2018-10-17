@@ -83,10 +83,6 @@ namespace CryptoKey
             ancestor.Dispose();
         }
 
-        private void btOpenAdd_Click(object sender, EventArgs e)
-        {
-            AddForm form = new AddForm(this, bl, AccountList, btOpenAdd.Location.X + btOpenAdd.Width, btOpenAdd.Location.Y);
-            form.setVisible(true);
-        }
+       
     }
 }

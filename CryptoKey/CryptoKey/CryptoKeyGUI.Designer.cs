@@ -225,6 +225,7 @@
             this.btdelete.TabIndex = 24;
             this.btdelete.Text = "Löschen";
             this.btdelete.UseVisualStyleBackColor = true;
+            this.btdelete.Click += new System.EventHandler(this.btdelete_Click);
             // 
             // btadd
             // 
@@ -235,6 +236,7 @@
             this.btadd.TabIndex = 23;
             this.btadd.Text = "Hinzufügen";
             this.btadd.UseVisualStyleBackColor = true;
+            this.btadd.Click += new System.EventHandler(this.btadd_Click);
             // 
             // btchange
             // 
@@ -245,6 +247,7 @@
             this.btchange.TabIndex = 22;
             this.btchange.Text = "Ändern";
             this.btchange.UseVisualStyleBackColor = true;
+            this.btchange.Click += new System.EventHandler(this.btchange_Click);
             // 
             // CryptoKeyGUI
             // 
