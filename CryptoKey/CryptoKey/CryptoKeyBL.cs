@@ -36,6 +36,43 @@ namespace CryptoKey
         public void add(Account acc)
         {
             accounts.Add(acc);
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,prioriy,marked) VALUES (@username,@title,@email,@onlineuser,@password,@url,@priority,@marked)";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    cmd.Parameters.AddWithValue("@username", Username);
+                    cmd.Parameters.AddWithValue("@title", acc.Title);
+                    cmd.Parameters.AddWithValue("@email", acc.Email);
+                    cmd.Parameters.AddWithValue("@onlineuser", acc.Onlineuser);
+                    cmd.Parameters.AddWithValue("@password", acc.Password);
+                    cmd.Parameters.AddWithValue("@url", acc.Url);
+                    cmd.Parameters.AddWithValue("@priority", acc.Priority);
+                    cmd.Parameters.AddWithValue("@marked", acc.marked);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.StackTrace);
+
+            }
+        }
+
+        public void update(ListBox list)
+        {
+            int sel = list.SelectedIndex;
+            list.BeginUpdate();
+            list.Items.Clear();
+            foreach (Account acc in accounts)
+            {
+                list.Items.Add(acc.ToString());
+            }
+            list.EndUpdate();
         }
 
         public void Logout()
