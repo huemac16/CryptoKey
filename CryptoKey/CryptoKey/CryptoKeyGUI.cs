@@ -29,7 +29,15 @@ namespace CryptoKey
 
         private void btadd_Click(object sender, EventArgs e)
         {
-            bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text });
+            try
+            {
+                char p = 'M';
+                if (rbH.Checked) p = 'H';
+                else if (rbL.Checked) p = 'L';
+                bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p},AccountList);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btdelete_Click(object sender, EventArgs e)
@@ -54,6 +62,7 @@ namespace CryptoKey
         {
             bl.Logout();
             Dispose();
+            ancestor.Dispose();
         }
     }
 }
