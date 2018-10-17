@@ -40,6 +40,7 @@ namespace CryptoKey
             update(list);
             try
             {
+
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked) VALUES ('"+ Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + acc.Password + "','" + acc.Url + "','" + acc.Priority + "','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
