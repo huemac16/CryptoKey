@@ -102,10 +102,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bild.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\button.png" />
+    <Content Include="Resources\bild.png" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\login.PNG" />
+    <Content Include="Resources\user add real.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close.png" />

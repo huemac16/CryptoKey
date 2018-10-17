@@ -25,7 +25,17 @@ namespace CryptoKey
 
         private void btchange_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                char p = 'M';
+                if (rbH.Checked) p = 'H';
+                else if (rbL.Checked) p = 'L';
+                bl.change(AccountList.SelectedIndex, new Account { id = ((Account) bl.Accounts[AccountList.SelectedIndex]).id, Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p }, AccountList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btadd_Click(object sender, EventArgs e)
@@ -43,7 +53,14 @@ namespace CryptoKey
 
         private void btdelete_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                bl.delete((Account)bl.Accounts[AccountList.SelectedIndex],AccountList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void setVisible(bool b)
@@ -64,6 +81,12 @@ namespace CryptoKey
             bl.Logout();
             Dispose();
             ancestor.Dispose();
+        }
+
+        private void btOpenAdd_Click(object sender, EventArgs e)
+        {
+            AddForm form = new AddForm(this, bl, AccountList, btOpenAdd.Location.X + btOpenAdd.Width, btOpenAdd.Location.Y);
+            form.setVisible(true);
         }
     }
 }

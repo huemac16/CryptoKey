@@ -42,7 +42,7 @@ namespace CryptoKey
             {
 
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked) VALUES ('"+ Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + acc.Password + "','" + acc.Url + "','" + acc.Priority + "','0')";
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -57,42 +57,67 @@ namespace CryptoKey
             }
         }
 
-        //public void change(int idx, Account acc, ListBox list)
-        //{
-        //    accounts.RemoveAt(idx);
-        //    accounts.Insert(idx, acc);
-        //    update(list);
-        //    try
-        //    {
-        //        SqlConnection con = new SqlConnection(conStrSQL);
-        //        string comStr = "UPDATE tblLS SET LArt = '" + laid + "' WHERE Jahr LIKE '" + jahr + "' AND ID LIKE '" + id + "'";
-        //        using (SqlCommand cmd = new SqlCommand(comStr, con))
-        //        {
-        //            con.Open();
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
-        //        }
+        public void change(int idx, Account acc, ListBox list)
+        {
+            accounts.RemoveAt(idx);
+            accounts.Insert(idx, acc);
+            update(list);
+            try
+            {
+                char m = '0';
+                if (acc.marked) m = '1';
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + EncryptionHelper.Encrypt(acc.Password) + "', url = '" + acc.Url + "', priority = '" + acc.Priority + "', marked = '" + m + "' WHERE id = '" + acc.id + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
 
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
-        //    }
-        //}
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+            }
+        }
+
+        public void delete(Account acc, ListBox list)
+        {
+            int id = acc.id;
+            accounts.Remove(acc);
+            update(list);
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE AccountTable SET deleted = '1'"
+                              + "WHERE id = '" + id + "';";
+                using(SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+            }
+        }
 
         private int getNewID()
         {
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "SELECT MAX(id) "
-                               + "FROM AccountTable;";
+                string comStr = "SELECT MAX(id) max "
+                              + "FROM AccountTable;";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
-                    var reader = cmd.ExecuteReader();
-                    reader.Read();
-                    int max = Convert.ToInt32(reader["MAX[id]"]);
+                    var reader = cmd.ExecuteReader(); 
+                    int max = 0;
+                    if (reader.Read()) max = Convert.ToInt32(reader["max"].ToString());
                     con.Close();
                     return max + 1;
                 }
@@ -121,7 +146,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "UPDATE UserTable SET online = '0';";
+                string comStr = comStr = "UPDATE UserTable SET online = '0' WHERE username = '" + Username + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -140,7 +165,8 @@ namespace CryptoKey
         public void Login(string username, string password)
         {
             string col = "username";
-            if (username.Contains("@")){
+            if (username.Contains("@"))
+            {
                 col = "email";
             }
             try
@@ -148,39 +174,43 @@ namespace CryptoKey
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = "SELECT * " +
                                 "FROM UserTable " +
-                                "WHERE "+col+" = '"+username+"';";
+                                "WHERE " + col + " = '" + username + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
-                    
+
                     var reader = cmd.ExecuteReader();
-                    if (reader.Read()){
+                    if (reader.Read())
+                    {
                         if (EncryptionHelper.Decrypt(reader["password"].ToString()).Equals(password))
                         {
-                            if(reader["online"].ToString().Equals("1")) throw new Exception("Sie sind bereits an einem anderen Gerät angemeldet!");
+                            if (reader["online"].ToString().Equals("1")) throw new Exception("Sie sind bereits an einem anderen Gerät angemeldet!");
                             Username = reader["username"].ToString();
                             Password = reader["password"].ToString();
                             Email = reader["email"].ToString();
                             if (reader["color"].ToString().Equals(""))
                             {
-                                Color = Color.FromArgb(0,51,204);
-                            } else
+                                Color = Color.FromArgb(0, 51, 204);
+                            }
+                            else
                             {
                                 Color = CreateColFromStr(reader["color"].ToString());
                             }
                             Theme = reader["theme"].ToString().Equals("0");
                             German = reader["german"].ToString().Equals("1");
                             reader.Close();
-                            comStr = "UPDATE UserTable SET online = '1';";
-                            using(SqlCommand cmd2 = new SqlCommand(comStr, con))
+                            comStr = "UPDATE UserTable SET online = '1' WHERE username = '" + Username + "';";
+                            using (SqlCommand cmd2 = new SqlCommand(comStr, con))
                             {
                                 cmd2.ExecuteNonQuery();
                             }
-                        } else
+                        }
+                        else
                         {
                             throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
                         }
-                    } else
+                    }
+                    else
                     {
                         throw new Exception("Username/Email ist nicht vorhanden!");
                     }
@@ -200,7 +230,7 @@ namespace CryptoKey
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = "SELECT * " +
                                 "FROM AccountTable " +
-                                "WHERE username = '" + Username + "';";
+                                "WHERE username = '" + Username + "' AND deleted = '0';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -208,15 +238,17 @@ namespace CryptoKey
                     while (reader.Read())
                     {
 
-                        Account acc = new Account {
+                        Account acc = new Account
+                        {
                             id = Convert.ToInt32(reader["id"]),
                             Email = reader["email"].ToString(),
                             Onlineuser = reader["onlineuser"].ToString(),
-                            Password = reader["password"].ToString(),
+                            Password = EncryptionHelper.Encrypt(reader["password"].ToString()),
                             Priority = reader["priority"].ToString()[0],
                             Title = reader["title"].ToString(),
                             Url = reader["url"].ToString(),
-                            marked = reader["marked"].ToString().Equals("1") };
+                            marked = reader["marked"].ToString().Equals("1")
+                        };
 
                         Accounts.Add(acc);
                     }
@@ -247,7 +279,7 @@ namespace CryptoKey
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = "SELECT username, email " +
                                 "FROM UserTable " +
-                                "WHERE username = '"+ username+ "' OR email = '" + email + "';";
+                                "WHERE username = '" + username + "' OR email = '" + email + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -260,21 +292,21 @@ namespace CryptoKey
                     con.Close();
 
                 }
-                comStr = "INSERT INTO UserTable VALUES('"+username+ "','" + password + "','" + email + "',0,NULL,0,1);";
+                comStr = "INSERT INTO UserTable VALUES('" + username + "','" + password + "','" + email + "',0,NULL,0,1);";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    
+
                 }
             }
             catch (SqlException ex)
             {
                 throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
-                
+
             }
         }
 
-    } 
+    }
 }
