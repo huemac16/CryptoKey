@@ -30,7 +30,6 @@
         {
             this.AccountList = new System.Windows.Forms.ListBox();
             this.btlogout = new System.Windows.Forms.Button();
-            this.btOpenAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbH = new System.Windows.Forms.RadioButton();
             this.rbL = new System.Windows.Forms.RadioButton();
@@ -71,16 +70,6 @@
             this.btlogout.Text = "Abmelden";
             this.btlogout.UseVisualStyleBackColor = true;
             this.btlogout.Click += new System.EventHandler(this.btlogout_Click);
-            // 
-            // btOpenAdd
-            // 
-            this.btOpenAdd.Location = new System.Drawing.Point(1625, 180);
-            this.btOpenAdd.Name = "btOpenAdd";
-            this.btOpenAdd.Size = new System.Drawing.Size(75, 73);
-            this.btOpenAdd.TabIndex = 21;
-            this.btOpenAdd.Text = ">";
-            this.btOpenAdd.UseVisualStyleBackColor = true;
-            this.btOpenAdd.Click += new System.EventHandler(this.btOpenAdd_Click);
             // 
             // groupBox1
             // 
@@ -261,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1698, 1062);
+            this.ClientSize = new System.Drawing.Size(1494, 1062);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -276,7 +265,6 @@
             this.Controls.Add(this.btdelete);
             this.Controls.Add(this.btadd);
             this.Controls.Add(this.btchange);
-            this.Controls.Add(this.btOpenAdd);
             this.Controls.Add(this.btlogout);
             this.Controls.Add(this.AccountList);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -294,7 +282,6 @@
 
         private System.Windows.Forms.ListBox AccountList;
         private System.Windows.Forms.Button btlogout;
-        private System.Windows.Forms.Button btOpenAdd;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbH;
         private System.Windows.Forms.RadioButton rbL;

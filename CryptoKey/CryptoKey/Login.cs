@@ -55,5 +55,11 @@ namespace CryptoKey
             tfUsername.Text = "";
             tfPassword.Text = "";
         }
+
+        private void close(object sender, MouseEventArgs e)
+        {
+            
+            this.Dispose();
+        }
     }
 }
