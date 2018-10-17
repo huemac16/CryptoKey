@@ -47,6 +47,7 @@
             this.rbL = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btlogout = new System.Windows.Forms.Button();
+            this.btOpenAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -249,11 +250,22 @@
             this.btlogout.UseVisualStyleBackColor = true;
             this.btlogout.Click += new System.EventHandler(this.btlogout_Click);
             // 
+            // btOpenAdd
+            // 
+            this.btOpenAdd.Location = new System.Drawing.Point(1625, 180);
+            this.btOpenAdd.Name = "btOpenAdd";
+            this.btOpenAdd.Size = new System.Drawing.Size(75, 73);
+            this.btOpenAdd.TabIndex = 21;
+            this.btOpenAdd.Text = ">";
+            this.btOpenAdd.UseVisualStyleBackColor = true;
+            this.btOpenAdd.Click += new System.EventHandler(this.btOpenAdd_Click);
+            // 
             // CryptoKeyGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1698, 1062);
+            this.Controls.Add(this.btOpenAdd);
             this.Controls.Add(this.btlogout);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
@@ -302,5 +314,6 @@
         private System.Windows.Forms.RadioButton rbL;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btlogout;
+        private System.Windows.Forms.Button btOpenAdd;
     }
 }

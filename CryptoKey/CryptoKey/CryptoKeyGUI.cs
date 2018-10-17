@@ -82,5 +82,14 @@ namespace CryptoKey
             Dispose();
             ancestor.Dispose();
         }
+
+        private void btOpenAdd_Click(object sender, EventArgs e)
+        {
+            AddForm form = new AddForm(this, bl, AccountList);
+            Console.WriteLine(btOpenAdd.Location.X);
+            Console.WriteLine(btOpenAdd.Location.Y);
+            form.SetDesktopLocation(btOpenAdd.Location.X + btOpenAdd.Width, btOpenAdd.Location.Y);
+            form.setVisible(true);
+        }
     }
 }

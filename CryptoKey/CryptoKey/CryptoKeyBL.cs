@@ -42,7 +42,7 @@ namespace CryptoKey
             {
 
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
