@@ -57,6 +57,29 @@ namespace CryptoKey
             }
         }
 
+        public void change(int idx, Account acc, ListBox list)
+        {
+            accounts.RemoveAt(idx);
+            accounts.Insert(idx, acc);
+            update(list);
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE tblLS SET LArt = '" + laid + "' WHERE Jahr LIKE '" + jahr + "' AND ID LIKE '" + id + "'";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+            }
+        }
+
         private int getNewID()
         {
             try

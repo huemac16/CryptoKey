@@ -56,7 +56,7 @@ namespace CryptoKey
             bl.Logout();
             this.setVisible(false);
             ancestor.setVisible(true);
-
+            ancestor.ClearTF();
         }
 
         private void WindowClosing(object sender, FormClosingEventArgs e)
