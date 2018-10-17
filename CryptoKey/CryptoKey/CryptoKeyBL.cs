@@ -57,28 +57,30 @@ namespace CryptoKey
             }
         }
 
-        //public void change(int idx, Account acc, ListBox list)
-        //{
-        //    accounts.RemoveAt(idx);
-        //    accounts.Insert(idx, acc);
-        //    update(list);
-        //    try
-        //    {
-        //        SqlConnection con = new SqlConnection(conStrSQL);
-        //        string comStr = "UPDATE AccountTable SET LArt = '" + laid + "' WHERE id = '"+idx+1+"';";
-        //        using (SqlCommand cmd = new SqlCommand(comStr, con))
-        //        {
-        //            con.Open();
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
-        //        }
+        public void change(int idx, Account acc, ListBox list)
+        {
+            accounts.RemoveAt(idx);
+            accounts.Insert(idx, acc);
+            update(list);
+            try
+            {
+                char m = '0';
+                if (acc.marked) m = '1';
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + acc.Password + "', url = '" + acc.Url + "', priority = '" + acc.Priority + "', marked = '" + m + "' WHERE id = '" + idx + 1 + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
 
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
-        //    }
-        //}
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+            }
+        }
 
         private int getNewID()
         {
