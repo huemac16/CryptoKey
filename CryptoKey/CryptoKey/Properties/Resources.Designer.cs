@@ -73,9 +73,9 @@ namespace CryptoKey.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap crypto {
+        internal static System.Drawing.Bitmap button {
             get {
-                object obj = ResourceManager.GetObject("crypto", resourceCulture);
+                object obj = ResourceManager.GetObject("button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

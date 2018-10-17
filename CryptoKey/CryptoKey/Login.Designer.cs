@@ -56,7 +56,7 @@
             this.tfUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tfUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tfUsername.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tfUsername.ForeColor = System.Drawing.Color.White;
+            this.tfUsername.ForeColor = System.Drawing.Color.Black;
             this.tfUsername.Location = new System.Drawing.Point(372, 137);
             this.tfUsername.Name = "tfUsername";
             this.tfUsername.Size = new System.Drawing.Size(267, 33);
@@ -77,7 +77,7 @@
             this.tfPassword.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tfPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tfPassword.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tfPassword.ForeColor = System.Drawing.Color.White;
+            this.tfPassword.ForeColor = System.Drawing.Color.Black;
             this.tfPassword.Location = new System.Drawing.Point(372, 231);
             this.tfPassword.Name = "tfPassword";
             this.tfPassword.Size = new System.Drawing.Size(267, 33);
@@ -86,36 +86,34 @@
             // 
             // btRegister
             // 
-            this.btRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btRegister.BackColor = System.Drawing.Color.Transparent;
             this.btRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btRegister.Font = new System.Drawing.Font("Roboto Th", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRegister.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRegister.ForeColor = System.Drawing.Color.White;
-            this.btRegister.Location = new System.Drawing.Point(539, 325);
+            this.btRegister.Location = new System.Drawing.Point(585, 308);
             this.btRegister.Name = "btRegister";
-            this.btRegister.Size = new System.Drawing.Size(100, 32);
+            this.btRegister.Size = new System.Drawing.Size(56, 43);
             this.btRegister.TabIndex = 5;
-            this.btRegister.Text = "Registrieren";
             this.btRegister.UseVisualStyleBackColor = false;
             this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // btLogin
             // 
-            this.btLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.btLogin.BackColor = System.Drawing.Color.Transparent;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btLogin.Font = new System.Drawing.Font("Roboto Th", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.White;
-            this.btLogin.Location = new System.Drawing.Point(372, 325);
+            this.btLogin.Location = new System.Drawing.Point(372, 308);
             this.btLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(100, 32);
+            this.btLogin.Size = new System.Drawing.Size(56, 43);
             this.btLogin.TabIndex = 6;
-            this.btLogin.Text = "Login";
             this.btLogin.UseVisualStyleBackColor = false;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // paBackground
             // 
-            this.paBackground.BackColor = System.Drawing.Color.Silver;
+            this.paBackground.BackColor = System.Drawing.Color.Gainsboro;
             this.paBackground.Controls.Add(this.paDes);
             this.paBackground.Controls.Add(this.label1);
             this.paBackground.Controls.Add(this.lbUsername);
@@ -133,16 +131,16 @@
             // 
             this.paDes.BackgroundImage = global::CryptoKey.Properties.Resources.bild;
             this.paDes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.paDes.Location = new System.Drawing.Point(4, 4);
+            this.paDes.Location = new System.Drawing.Point(4, 0);
             this.paDes.Name = "paDes";
-            this.paDes.Size = new System.Drawing.Size(336, 388);
+            this.paDes.Size = new System.Drawing.Size(336, 406);
             this.paDes.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Roboto Th", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(441, 21);
+            this.label1.Location = new System.Drawing.Point(445, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 49);
             this.label1.TabIndex = 7;
@@ -155,6 +153,7 @@
             this.ClientSize = new System.Drawing.Size(669, 387);
             this.Controls.Add(this.paBackground);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.paBackground.ResumeLayout(false);
             this.paBackground.PerformLayout();
