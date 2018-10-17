@@ -173,7 +173,7 @@ namespace CryptoKey
                             Theme = reader["theme"].ToString().Equals("0");
                             German = reader["german"].ToString().Equals("1");
                             reader.Close();
-                            comStr = "UPDATE UserTable SET online = '1';";
+                            comStr = "UPDATE UserTable SET online = '1' WHERE username = '"+Username+"';";
                             using(SqlCommand cmd2 = new SqlCommand(comStr, con))
                             {
                                 cmd2.ExecuteNonQuery();

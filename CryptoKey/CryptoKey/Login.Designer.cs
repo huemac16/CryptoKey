@@ -42,15 +42,13 @@
             // 
             // lbUsername
             // 
-            this.lbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsername.AutoSize = true;
-            this.lbUsername.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lbUsername.Location = new System.Drawing.Point(736, 210);
             this.lbUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(172, 48);
-            this.lbUsername.Size = new System.Drawing.Size(129, 24);
+            this.lbUsername.Size = new System.Drawing.Size(268, 44);
             this.lbUsername.TabIndex = 0;
             this.lbUsername.Text = "Benutzername";
             // 
@@ -69,15 +67,13 @@
             // 
             // lbPassword
             // 
-            this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lbPassword.Location = new System.Drawing.Point(736, 388);
             this.lbPassword.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(196, 50);
-            this.lbPassword.Size = new System.Drawing.Size(85, 24);
+            this.lbPassword.Size = new System.Drawing.Size(176, 44);
             this.lbPassword.TabIndex = 2;
             this.lbPassword.Text = "Passwort";
             // 
@@ -139,8 +135,7 @@
             this.paBackground.Location = new System.Drawing.Point(-12, -2);
             this.paBackground.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.paBackground.Name = "paBackground";
-            this.paBackground.Size = new System.Drawing.Size(1364, 760);
-            this.paBackground.Size = new System.Drawing.Size(682, 409);
+            this.paBackground.Size = new System.Drawing.Size(1364, 708);
             this.paBackground.TabIndex = 7;
             // 
             // paDes
@@ -151,17 +146,18 @@
             this.paDes.Location = new System.Drawing.Point(8, 0);
             this.paDes.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.paDes.Name = "paDes";
-            this.paDes.Size = new System.Drawing.Size(672, 781);
+            this.paDes.Size = new System.Drawing.Size(672, 701);
             this.paDes.TabIndex = 8;
             // 
             // lnLogIn
             // 
             this.lnLogIn.AutoSize = true;
-            this.lnLogIn.Font = new System.Drawing.Font("Roboto Th", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnLogIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.lnLogIn.Location = new System.Drawing.Point(445, 21);
+            this.lnLogIn.Location = new System.Drawing.Point(890, 40);
+            this.lnLogIn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lnLogIn.Name = "lnLogIn";
-            this.lnLogIn.Size = new System.Drawing.Size(119, 46);
+            this.lnLogIn.Size = new System.Drawing.Size(242, 85);
             this.lnLogIn.TabIndex = 7;
             this.lnLogIn.Text = "Log In";
             // 
@@ -169,7 +165,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1338, 744);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1338, 709);
             this.Controls.Add(this.paBackground);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Login";
