@@ -20,7 +20,7 @@ namespace CryptoKey
             InitializeComponent();
             this.ancestor = ancestor;
             this.bl = bl;
-            bl.InitAccounts(AccountList);
+            bl.InitAccounts(AccountList,"","");
         }
 
         private void btchange_Click(object sender, EventArgs e)
@@ -83,6 +83,24 @@ namespace CryptoKey
             ancestor.Dispose();
         }
 
-       
+        private void ApplyFilter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btsort1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btsort2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btsort3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

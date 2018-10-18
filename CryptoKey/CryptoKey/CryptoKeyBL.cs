@@ -19,11 +19,18 @@ namespace CryptoKey
                         "Password=$ck_RotHue#";
 
         private ArrayList accounts = new ArrayList();
+        private ArrayList filtered = new ArrayList();
 
         public ArrayList Accounts
         {
             get { return accounts; }
             set { accounts = value; }
+        }
+
+        public ArrayList Filtered
+        {
+            get { return filtered; }
+            set { filtered = value; }
         }
 
         public string Username { get; set; }
@@ -37,6 +44,7 @@ namespace CryptoKey
         {
             acc.id = getNewID();
             accounts.Add(acc);
+            filtered.Add(acc);
             update(list);
             try
             {
@@ -61,6 +69,8 @@ namespace CryptoKey
         {
             accounts.RemoveAt(idx);
             accounts.Insert(idx, acc);
+            filtered.RemoveAt(idx);
+            filtered.Insert(idx, acc);
             update(list);
             try
             {
@@ -86,13 +96,14 @@ namespace CryptoKey
         {
             int id = acc.id;
             accounts.Remove(acc);
+            filtered.Remove(acc);
             update(list);
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
                 string comStr = "UPDATE AccountTable SET deleted = '1'"
                               + "WHERE id = '" + id + "';";
-                using(SqlCommand cmd = new SqlCommand(comStr, con))
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -115,7 +126,7 @@ namespace CryptoKey
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
-                    var reader = cmd.ExecuteReader(); 
+                    var reader = cmd.ExecuteReader();
                     int max = 0;
                     if (reader.Read()) max = Convert.ToInt32(reader["max"].ToString());
                     con.Close();
@@ -134,7 +145,7 @@ namespace CryptoKey
             int sel = list.SelectedIndex;
             list.BeginUpdate();
             list.Items.Clear();
-            foreach (Account acc in accounts)
+            foreach (Account acc in filtered)
             {
                 list.Items.Add(acc.ToString());
             }
@@ -228,11 +239,11 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                if (!sorting.Equals("")) sorting = String.Format(" ORDER BY {0}",sorting);
+                if (!sorting.Equals("")) sorting = String.Format(" ORDER BY {0}", sorting);
                 if (!filter.Equals("")) filter = String.Format(" AND {0}", filter);
                 string comStr = "SELECT * " +
                                 "FROM AccountTable " +
-                                "WHERE username = '" + Username + "' AND deleted = '0'"+filter+""+sorting+";";
+                                "WHERE username = '" + Username + "' AND deleted = '0'" + filter + "" + sorting + ";";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
