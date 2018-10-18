@@ -223,14 +223,16 @@ namespace CryptoKey
             }
         }
 
-        public void InitAccounts(ListBox list)
+        public void InitAccounts(ListBox list, string filter, string sorting)
         {
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
+                if (!sorting.Equals("")) sorting = String.Format(" ORDER BY {0}",sorting);
+                if (!filter.Equals("")) filter = String.Format(" AND {0}", filter);
                 string comStr = "SELECT * " +
                                 "FROM AccountTable " +
-                                "WHERE username = '" + Username + "' AND deleted = '0';";
+                                "WHERE username = '" + Username + "' AND deleted = '0'"+filter+""+sorting+";";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
