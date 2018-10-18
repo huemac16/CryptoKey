@@ -223,7 +223,7 @@ namespace CryptoKey
                     }
                     else
                     {
-                        throw new Exception("Username/Email ist nicht vorhanden!");
+                        throw new Exception("Register");
                     }
                     con.Close();
                 }
