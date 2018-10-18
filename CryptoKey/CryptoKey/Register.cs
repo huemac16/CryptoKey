@@ -23,11 +23,12 @@ namespace CryptoKey
         public Register(Login ancestor , CryptoKeyBL bl)
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.MaximizeBox = false;
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ancestor = ancestor;
             this.bl = bl;
+            
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -212,6 +213,13 @@ namespace CryptoKey
 
 
 
+
+        }
+
+        private void hover(object sender, EventArgs e)
+        {
+            toolTip1.ShowAlways = true;
+            toolTip1.Show("Großbuchstabe, Kleinbuchstabe, Ziffer, mindestens 8 Stellen lang", tfpassword);
 
         }
     }
