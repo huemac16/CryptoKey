@@ -10,9 +10,18 @@ using System.Windows.Forms;
 
 namespace CryptoKey
 {
-    public partial class MessageBox1 : Form
+    public partial class MessageBox2 : Form
     {
-        public MessageBox1(string txt, Color color, bool theme, bool lan)
+        private bool ok;
+
+        public bool Ok
+        {
+            get { return ok; }
+            set { ok = value; }
+        }
+
+
+        public MessageBox2(string txt, Color color, bool theme, bool lan)
         {
             InitializeComponent();
             btok.FlatAppearance.BorderSize = 0;
@@ -28,7 +37,8 @@ namespace CryptoKey
             {
                 btok.ForeColor = Color.FromArgb(230, 230, 230);
                 btdeny.ForeColor = Color.FromArgb(230, 230, 230);
-            } else
+            }
+            else
             {
                 btok.ForeColor = Color.FromArgb(50, 50, 50);
                 btdeny.ForeColor = Color.FromArgb(50, 50, 50);
@@ -43,20 +53,20 @@ namespace CryptoKey
             }
             if (lan)
             {
-                lbtitle.Text = "Message";
-                btdeny.Text = "Close";
-            } 
-
+                lbtitle.Text = "Warning";
+                btdeny.Text = "No";
+                btok.Text = "Yes";
+            }
         }
 
         private void btok_Click(object sender, EventArgs e)
         {
-            this.setVisible(false);
+            ok = true;
         }
 
         private void btdeny_Click(object sender, EventArgs e)
         {
-            this.setVisible(false);
+            ok = false;
         }
 
         public void setVisible(bool b)

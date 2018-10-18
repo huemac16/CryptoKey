@@ -84,9 +84,10 @@ namespace CryptoKey
 
 
             }
-            catch(Exception x)
+            catch(Exception ex)
             {
-                MessageBox.Show("" + x.Message);
+                MessageBox1 mb = new MessageBox1(ex.Message, Color.FromArgb(0, 51, 204), false, false);
+                mb.setVisible(true);
             }
         }
 
