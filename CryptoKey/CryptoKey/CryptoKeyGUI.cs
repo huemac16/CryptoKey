@@ -20,7 +20,7 @@ namespace CryptoKey
             InitializeComponent();
             this.ancestor = ancestor;
             this.bl = bl;
-            bl.InitAccounts(AccountList);
+            //bl.InitAccounts(AccountList);
         }
 
         private void btchange_Click(object sender, EventArgs e)

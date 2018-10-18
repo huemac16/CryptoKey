@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace CryptoKey
     {
         private Login ancestor;
         private CryptoKeyBL bl;
+        private int curr = 0;
         public Register(Login ancestor , CryptoKeyBL bl)
         {
             InitializeComponent();
@@ -103,6 +105,64 @@ namespace CryptoKey
             }
 
             return false;
+        }
+
+        private void textChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("jajaaaa");
+            string text = tfpassword.Text;
+            bool low = false;
+            bool upp = false;
+            bool dig = false;
+            bool len = false;
+            ArrayList list = new ArrayList();
+
+
+            if (text.Any(char.IsUpper))
+            {
+                upp = true;
+                
+            }
+            if(text.Any(char.IsLower))
+            {
+                low = true;
+            }
+            if(text.Any(c => char.IsDigit(c)))
+            {
+                dig = true;
+            }
+            if(text.Length >= 8)
+            {
+                len = true;
+            }
+            list.Add(low);
+            list.Add(upp);
+            list.Add(dig);
+            list.Add(len);
+
+            int howmany = 0;
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                if((bool) list[i])
+                {
+                    howmany++;
+                }
+
+            }
+
+           switch(howmany)
+            {
+                case 0:break;
+                case 1:passwordProgressBar.Increment(25);break;
+                case 2: passwordProgressBar.Increment(25);break;
+                case 3: passwordProgressBar.Increment(25);break;
+                case 4: passwordProgressBar.Increment(25);break;
+            }
+
+
+            
+            
         }
     }
 }

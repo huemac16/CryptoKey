@@ -40,6 +40,7 @@
             this.pnBild = new System.Windows.Forms.Panel();
             this.btCancel = new System.Windows.Forms.Button();
             this.btRegister = new System.Windows.Forms.Button();
+            this.passwordProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +94,7 @@
             this.tfpassword.Size = new System.Drawing.Size(277, 20);
             this.tfpassword.TabIndex = 5;
             this.tfpassword.UseSystemPasswordChar = true;
+            this.tfpassword.TextChanged += new System.EventHandler(this.textChanged);
             // 
             // label4
             // 
@@ -154,12 +156,21 @@
             this.btRegister.UseVisualStyleBackColor = false;
             this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
+            // passwordProgressBar
+            // 
+            this.passwordProgressBar.Location = new System.Drawing.Point(352, 339);
+            this.passwordProgressBar.Name = "passwordProgressBar";
+            this.passwordProgressBar.Size = new System.Drawing.Size(276, 13);
+            this.passwordProgressBar.Step = 25;
+            this.passwordProgressBar.TabIndex = 12;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(668, 536);
+            this.Controls.Add(this.passwordProgressBar);
             this.Controls.Add(this.pnBild);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancel);
@@ -194,5 +205,6 @@
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnBild;
+        private System.Windows.Forms.ProgressBar passwordProgressBar;
     }
 }
