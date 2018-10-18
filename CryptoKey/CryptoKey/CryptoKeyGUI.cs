@@ -20,16 +20,16 @@ namespace CryptoKey
             InitializeComponent();
             this.ancestor = ancestor;
             this.bl = bl;
-            bl.InitAccounts(AccountList,"","");
+            bl.InitAccounts(AccountList,"");
         }
 
         private void btchange_Click(object sender, EventArgs e)
         {
             try
             {
-                char p = 'M';
-                if (rbH.Checked) p = 'H';
-                else if (rbL.Checked) p = 'L';
+                char p = '2';
+                if (rbH.Checked) p = '3';
+                else if (rbL.Checked) p = '1';
                 bl.change(AccountList.SelectedIndex, new Account { id = ((Account) bl.Accounts[AccountList.SelectedIndex]).id, Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p }, AccountList);
             }
             catch (Exception ex)
@@ -42,9 +42,9 @@ namespace CryptoKey
         {
             try
             {
-                char p = 'M';
-                if (rbH.Checked) p = 'H';
-                else if (rbL.Checked) p = 'L';
+                char p = '2';
+                if (rbH.Checked) p = '3';
+                else if (rbL.Checked) p = '1';
                 bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p},AccountList);
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -85,22 +85,23 @@ namespace CryptoKey
 
         private void ApplyFilter(object sender, EventArgs e)
         {
-
+            bl.filter(tffilter.Text);
+            bl.update(AccountList);
         }
 
         private void btsort1_Click(object sender, EventArgs e)
         {
-
+            bl.InitAccounts(AccountList,"priority DESC, title ASC");
         }
 
         private void btsort2_Click(object sender, EventArgs e)
         {
-
+            bl.InitAccounts(AccountList, "marked DESC, title ASC");
         }
 
         private void btsort3_Click(object sender, EventArgs e)
         {
-
+            bl.InitAccounts(AccountList, "title ASC");
         }
     }
 }

@@ -234,16 +234,17 @@ namespace CryptoKey
             }
         }
 
-        public void InitAccounts(ListBox list, string filter, string sorting)
+        public void InitAccounts(ListBox list, string sorting)
         {
             try
             {
+                Accounts.Clear();
+                Filtered.Clear();
                 SqlConnection con = new SqlConnection(conStrSQL);
                 if (!sorting.Equals("")) sorting = String.Format(" ORDER BY {0}", sorting);
-                if (!filter.Equals("")) filter = String.Format(" AND {0}", filter);
                 string comStr = "SELECT * " +
                                 "FROM AccountTable " +
-                                "WHERE username = '" + Username + "' AND deleted = '0'" + filter + "" + sorting + ";";
+                                "WHERE username = '" + Username + "' AND deleted = '0'" + sorting + ";";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -264,6 +265,7 @@ namespace CryptoKey
                         };
 
                         Accounts.Add(acc);
+                        Filtered.Add(acc);
                     }
                 }
                 con.Close();
@@ -321,5 +323,17 @@ namespace CryptoKey
             }
         }
 
+        public void filter(string txt)
+        {
+            filtered.Clear();
+            foreach (Account acc in accounts)
+            {
+                if (acc.Title.ToLower().Contains(txt.ToLower()))
+                {
+                    filtered.Add(acc);
+                }
+            }
+        }
     }
+
 }
