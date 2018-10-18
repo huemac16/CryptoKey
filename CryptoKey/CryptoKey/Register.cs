@@ -15,7 +15,11 @@ namespace CryptoKey
     {
         private Login ancestor;
         private CryptoKeyBL bl;
-        private int curr = 0;
+        private bool alUpp;
+        private bool alLow;
+        private bool alDig;
+        private bool alLen;
+
         public Register(Login ancestor , CryptoKeyBL bl)
         {
             InitializeComponent();
@@ -109,60 +113,106 @@ namespace CryptoKey
 
         private void textChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("jajaaaa");
             string text = tfpassword.Text;
-            bool low = false;
-            bool upp = false;
-            bool dig = false;
-            bool len = false;
-            ArrayList list = new ArrayList();
-
-
-            if (text.Any(char.IsUpper))
+           if(!alUpp)
             {
-                upp = true;
-                
-            }
-            if(text.Any(char.IsLower))
-            {
-                low = true;
-            }
-            if(text.Any(c => char.IsDigit(c)))
-            {
-                dig = true;
-            }
-            if(text.Length >= 8)
-            {
-                len = true;
-            }
-            list.Add(low);
-            list.Add(upp);
-            list.Add(dig);
-            list.Add(len);
-
-            int howmany = 0;
-
-            for(int i = 0; i < list.Count; i++)
-            {
-                if((bool) list[i])
+                if(text.Any(Char.IsUpper))
                 {
-                    howmany++;
+                    passwordProgressBar.Increment(25);
+                    
+                    alUpp = true;
+
+                }
+              
+
+            }
+            else
+            {
+                if (!text.Any(Char.IsUpper))
+                {
+                    passwordProgressBar.Increment(-25);
+
+                    alUpp = false;
+
+                }
+
+
+            }
+
+
+            if (!alLow)
+            {
+                if (text.Any(Char.IsLower))
+                {
+                    passwordProgressBar.Increment(25);
+                    alLow = true;
                 }
 
             }
-
-           switch(howmany)
+            else
             {
-                case 0:break;
-                case 1:passwordProgressBar.Increment(25);break;
-                case 2: passwordProgressBar.Increment(25);break;
-                case 3: passwordProgressBar.Increment(25);break;
-                case 4: passwordProgressBar.Increment(25);break;
+                if (!text.Any(Char.IsLower))
+                {
+                    passwordProgressBar.Increment(-25);
+
+                    alLow = false;
+
+                }
+
+
             }
 
 
-            
-            
+            if (!alDig)
+            {
+                if (text.Any(c => char.IsDigit(c)))
+                {
+                    passwordProgressBar.Increment(25);
+                    alDig = true;
+                }
+
+            }
+            else
+            {
+                if (!text.Any(c => char.IsDigit(c)))
+                {
+                    passwordProgressBar.Increment(-25);
+
+                    alDig = false;
+
+                }
+
+
+            }
+
+
+            if (!alLen)
+            {
+                if (text.Length >= 8)
+                {
+                    passwordProgressBar.Increment(25);
+                    alLen = true;
+                }
+            }
+            else
+            {
+                if (!(text.Length >= 8))
+                {
+                    passwordProgressBar.Increment(-25);
+
+                    alLen = false;
+
+                }
+
+
+            }
+
+
+
+
+
+
+
         }
     }
 }

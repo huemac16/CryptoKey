@@ -47,6 +47,10 @@
             this.btdelete = new System.Windows.Forms.Button();
             this.btadd = new System.Windows.Forms.Button();
             this.btchange = new System.Windows.Forms.Button();
+            this.btsort1 = new System.Windows.Forms.Button();
+            this.btsort2 = new System.Windows.Forms.Button();
+            this.btsort3 = new System.Windows.Forms.Button();
+            this.tffilter = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,7 +222,7 @@
             // 
             // btdelete
             // 
-            this.btdelete.Location = new System.Drawing.Point(1064, 869);
+            this.btdelete.Location = new System.Drawing.Point(1064, 817);
             this.btdelete.Margin = new System.Windows.Forms.Padding(4);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(108, 52);
@@ -229,7 +233,7 @@
             // 
             // btadd
             // 
-            this.btadd.Location = new System.Drawing.Point(1291, 757);
+            this.btadd.Location = new System.Drawing.Point(1180, 757);
             this.btadd.Margin = new System.Windows.Forms.Padding(4);
             this.btadd.Name = "btadd";
             this.btadd.Size = new System.Drawing.Size(172, 52);
@@ -249,11 +253,53 @@
             this.btchange.UseVisualStyleBackColor = true;
             this.btchange.Click += new System.EventHandler(this.btchange_Click);
             // 
+            // btsort1
+            // 
+            this.btsort1.Location = new System.Drawing.Point(1064, 890);
+            this.btsort1.Name = "btsort1";
+            this.btsort1.Size = new System.Drawing.Size(129, 44);
+            this.btsort1.TabIndex = 36;
+            this.btsort1.Text = "Priorität";
+            this.btsort1.UseVisualStyleBackColor = true;
+            this.btsort1.Click += new System.EventHandler(this.btsort1_Click);
+            // 
+            // btsort2
+            // 
+            this.btsort2.Location = new System.Drawing.Point(1199, 890);
+            this.btsort2.Name = "btsort2";
+            this.btsort2.Size = new System.Drawing.Size(129, 44);
+            this.btsort2.TabIndex = 37;
+            this.btsort2.Text = "Markiert";
+            this.btsort2.UseVisualStyleBackColor = true;
+            this.btsort2.Click += new System.EventHandler(this.btsort2_Click);
+            // 
+            // btsort3
+            // 
+            this.btsort3.Location = new System.Drawing.Point(1335, 890);
+            this.btsort3.Name = "btsort3";
+            this.btsort3.Size = new System.Drawing.Size(129, 44);
+            this.btsort3.TabIndex = 38;
+            this.btsort3.Text = "Alphabet";
+            this.btsort3.UseVisualStyleBackColor = true;
+            this.btsort3.Click += new System.EventHandler(this.btsort3_Click);
+            // 
+            // tffilter
+            // 
+            this.tffilter.Location = new System.Drawing.Point(1064, 960);
+            this.tffilter.Name = "tffilter";
+            this.tffilter.Size = new System.Drawing.Size(400, 31);
+            this.tffilter.TabIndex = 39;
+            this.tffilter.TextChanged += new System.EventHandler(this.ApplyFilter);
+            // 
             // CryptoKeyGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1494, 1062);
+            this.Controls.Add(this.tffilter);
+            this.Controls.Add(this.btsort3);
+            this.Controls.Add(this.btsort2);
+            this.Controls.Add(this.btsort1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -302,5 +348,9 @@
         private System.Windows.Forms.Button btdelete;
         private System.Windows.Forms.Button btadd;
         private System.Windows.Forms.Button btchange;
+        private System.Windows.Forms.Button btsort1;
+        private System.Windows.Forms.Button btsort2;
+        private System.Windows.Forms.Button btsort3;
+        private System.Windows.Forms.TextBox tffilter;
     }
 }
