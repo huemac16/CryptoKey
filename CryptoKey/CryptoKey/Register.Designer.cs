@@ -40,6 +40,8 @@
             this.pnBild = new System.Windows.Forms.Panel();
             this.btCancel = new System.Windows.Forms.Button();
             this.btRegister = new System.Windows.Forms.Button();
+            this.passwordProgressBar = new System.Windows.Forms.ProgressBar();
+            this.pnback = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +95,7 @@
             this.tfpassword.Size = new System.Drawing.Size(277, 20);
             this.tfpassword.TabIndex = 5;
             this.tfpassword.UseSystemPasswordChar = true;
+            this.tfpassword.TextChanged += new System.EventHandler(this.textChanged);
             // 
             // label4
             // 
@@ -154,12 +157,30 @@
             this.btRegister.UseVisualStyleBackColor = false;
             this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
+            // passwordProgressBar
+            // 
+            this.passwordProgressBar.BackColor = System.Drawing.Color.MidnightBlue;
+            this.passwordProgressBar.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.passwordProgressBar.Location = new System.Drawing.Point(352, 339);
+            this.passwordProgressBar.Name = "passwordProgressBar";
+            this.passwordProgressBar.Size = new System.Drawing.Size(276, 3);
+            this.passwordProgressBar.Step = 25;
+            this.passwordProgressBar.TabIndex = 12;
+            // 
+            // pnback
+            // 
+            this.pnback.Location = new System.Drawing.Point(335, 12);
+            this.pnback.Name = "pnback";
+            this.pnback.Size = new System.Drawing.Size(333, 512);
+            this.pnback.TabIndex = 13;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(668, 536);
+            this.Controls.Add(this.passwordProgressBar);
             this.Controls.Add(this.pnBild);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancel);
@@ -172,6 +193,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tfEmail);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pnback);
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
@@ -194,5 +216,7 @@
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnBild;
+        private System.Windows.Forms.ProgressBar passwordProgressBar;
+        private System.Windows.Forms.Panel pnback;
     }
 }
