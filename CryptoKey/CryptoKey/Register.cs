@@ -17,6 +17,9 @@ namespace CryptoKey
         public Register(Login ancestor , CryptoKeyBL bl)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ancestor = ancestor;
             this.bl = bl;
         }

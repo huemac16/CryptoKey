@@ -36,13 +36,17 @@
             this.tfpassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tfPassword2 = new System.Windows.Forms.TextBox();
-            this.btRegister = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pnBild = new System.Windows.Forms.Panel();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(57, 51);
+            this.label1.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label1.Location = new System.Drawing.Point(348, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
@@ -50,29 +54,33 @@
             // 
             // tfEmail
             // 
-            this.tfEmail.Location = new System.Drawing.Point(60, 78);
+            this.tfEmail.Location = new System.Drawing.Point(351, 135);
             this.tfEmail.Name = "tfEmail";
             this.tfEmail.Size = new System.Drawing.Size(277, 20);
             this.tfEmail.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(57, 128);
+            this.label2.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label2.Location = new System.Drawing.Point(348, 185);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.Size = new System.Drawing.Size(137, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Benutzername";
             // 
             // tfUsername
             // 
-            this.tfUsername.Location = new System.Drawing.Point(60, 164);
+            this.tfUsername.Location = new System.Drawing.Point(351, 221);
             this.tfUsername.Name = "tfUsername";
             this.tfUsername.Size = new System.Drawing.Size(277, 20);
             this.tfUsername.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(57, 220);
+            this.label3.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label3.Location = new System.Drawing.Point(348, 277);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 4;
@@ -80,7 +88,7 @@
             // 
             // tfpassword
             // 
-            this.tfpassword.Location = new System.Drawing.Point(60, 255);
+            this.tfpassword.Location = new System.Drawing.Point(351, 312);
             this.tfpassword.Name = "tfpassword";
             this.tfpassword.Size = new System.Drawing.Size(277, 20);
             this.tfpassword.TabIndex = 5;
@@ -88,45 +96,72 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(57, 310);
+            this.label4.Font = new System.Drawing.Font("Roboto Th", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label4.Location = new System.Drawing.Point(348, 367);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 23);
+            this.label4.Size = new System.Drawing.Size(195, 23);
             this.label4.TabIndex = 6;
             this.label4.Text = "Passwort wiederholen";
             // 
             // tfPassword2
             // 
-            this.tfPassword2.Location = new System.Drawing.Point(60, 349);
+            this.tfPassword2.Location = new System.Drawing.Point(351, 406);
             this.tfPassword2.Name = "tfPassword2";
             this.tfPassword2.Size = new System.Drawing.Size(277, 20);
             this.tfPassword2.TabIndex = 7;
             this.tfPassword2.UseSystemPasswordChar = true;
             // 
-            // btRegister
+            // label5
             // 
-            this.btRegister.Location = new System.Drawing.Point(60, 421);
-            this.btRegister.Name = "btRegister";
-            this.btRegister.Size = new System.Drawing.Size(120, 23);
-            this.btRegister.TabIndex = 8;
-            this.btRegister.Text = "Registrieren";
-            this.btRegister.UseVisualStyleBackColor = true;
-            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
+            this.label5.Font = new System.Drawing.Font("Roboto Th", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(421, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(166, 43);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Registrieren";
+            // 
+            // pnBild
+            // 
+            this.pnBild.BackgroundImage = global::CryptoKey.Properties.Resources.bildRegister;
+            this.pnBild.Location = new System.Drawing.Point(0, -1);
+            this.pnBild.Name = "pnBild";
+            this.pnBild.Size = new System.Drawing.Size(329, 544);
+            this.pnBild.TabIndex = 11;
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(242, 421);
+            this.btCancel.BackgroundImage = global::CryptoKey.Properties.Resources.x1;
+            this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btCancel.Location = new System.Drawing.Point(530, 469);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(125, 23);
+            this.btCancel.Size = new System.Drawing.Size(57, 44);
             this.btCancel.TabIndex = 9;
-            this.btCancel.Text = "Abbrechen";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // btRegister
+            // 
+            this.btRegister.BackColor = System.Drawing.Color.Gainsboro;
+            this.btRegister.BackgroundImage = global::CryptoKey.Properties.Resources.addUserFinal2;
+            this.btRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRegister.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btRegister.Location = new System.Drawing.Point(391, 469);
+            this.btRegister.Name = "btRegister";
+            this.btRegister.Size = new System.Drawing.Size(57, 44);
+            this.btRegister.TabIndex = 8;
+            this.btRegister.UseVisualStyleBackColor = false;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 512);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(668, 536);
+            this.Controls.Add(this.pnBild);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btRegister);
             this.Controls.Add(this.tfPassword2);
@@ -138,6 +173,7 @@
             this.Controls.Add(this.tfEmail);
             this.Controls.Add(this.label1);
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,5 +192,7 @@
         private System.Windows.Forms.TextBox tfPassword2;
         private System.Windows.Forms.Button btRegister;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pnBild;
     }
 }

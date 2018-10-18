@@ -102,7 +102,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\x1.png" />
+    <None Include="Resources\x.png" />
+    <None Include="Resources\addUserFinal.png" />
+    <None Include="Resources\addUserFinal1.png" />
+    <None Include="Resources\addUserFinal2.png" />
     <Content Include="Resources\bild.png" />
+    <None Include="Resources\bildRegister.png" />
     <Content Include="Resources\close.png" />
     <Content Include="Resources\login.PNG" />
     <Content Include="Resources\user add real.png" />
