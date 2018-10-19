@@ -21,7 +21,6 @@ namespace CryptoKey
             this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             CultureInfo ci = CultureInfo.InstalledUICulture;
-            MessageBox.Show(ci.ThreeLetterISOLanguageName);
             if (ci.ThreeLetterISOLanguageName.Equals("deu"))
             {
                 bl.German = true;
