@@ -31,10 +31,7 @@ namespace CryptoKey
         {
             try
             {
-                char p = '2';
-                if (rbH.Checked) p = '3';
-                else if (rbL.Checked) p = '1';
-                bl.change(AccountList.SelectedIndex, new Account { id = ((Account) bl.Accounts[AccountList.SelectedIndex]).id, Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p }, AccountList);
+                bl.change(AccountList.SelectedIndex, new Account { id = ((Account) bl.Accounts[AccountList.SelectedIndex]).id, Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text }, AccountList);
             }
             catch (Exception ex)
             {
@@ -46,10 +43,7 @@ namespace CryptoKey
         {
             try
             {
-                char p = '2';
-                if (rbH.Checked) p = '3';
-                else if (rbL.Checked) p = '1';
-                bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text, Priority = p},AccountList);
+                bl.add(new Account { Email = tfemail.Text, Title = tftitle.Text, Password = tfpassword.Text, Onlineuser = tfusername.Text, Url = tfurl.Text},AccountList);
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }

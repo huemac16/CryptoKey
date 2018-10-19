@@ -41,6 +41,29 @@ namespace CryptoKey
         public bool German { get; set; }
         public string cryptokey { get; set; }
 
+
+        public void changeUserColor(Color col)
+        {
+            Color = col;
+            string colStr = col.R + "," + col.G + "," + col.B + ",";
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE UserTable SET color = '" + colStr + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
+            }
+        }
+
         public void add(Account acc, ListBox list)
         {
             acc.id = getNewID();
@@ -51,7 +74,7 @@ namespace CryptoKey
             {
 
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "','" + acc.Url + "','0','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -79,7 +102,7 @@ namespace CryptoKey
                 char m = '0';
                 if (acc.marked) m = '1';
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "', url = '" + acc.Url + "', priority = '" + acc.Priority + "', marked = '" + m + "' WHERE id = '" + acc.id + "';";
+                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "', url = '" + acc.Url + "', marked = '" + m + "' WHERE id = '" + acc.id + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -268,7 +291,6 @@ namespace CryptoKey
                             Email = reader["email"].ToString(),
                             Onlineuser = reader["onlineuser"].ToString(),
                             Password = EncryptionHelper.Encrypt(reader["password"].ToString(),cryptokey),
-                            Priority = reader["priority"].ToString()[0],
                             Title = reader["title"].ToString(),
                             Url = reader["url"].ToString(),
                             marked = reader["marked"].ToString().Equals("1")

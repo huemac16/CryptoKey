@@ -13,7 +13,6 @@ namespace CryptoKey
         public string Onlineuser { get; set; }
         public string Password { get; set; }
         public string Url { get; set; }
-        public char Priority { get; set; }
         public bool marked { get; set; }
         public int id { get; set; }
         
