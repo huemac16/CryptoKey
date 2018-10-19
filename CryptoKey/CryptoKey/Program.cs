@@ -14,11 +14,8 @@ namespace CryptoKey
         [STAThread]
         static void Main()
         {
-            Screen screen = Screen.PrimaryScreen;
-            int S_width = screen.Bounds.Width;
-            int S_height = screen.Bounds.Height;
-            Console.WriteLine("{0}x{1}" , S_width, S_height);
-
+            
+            
    
 
 

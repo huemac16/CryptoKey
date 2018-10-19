@@ -15,6 +15,8 @@ namespace CryptoKey
     {
         private Login ancestor;
         private CryptoKeyBL bl;
+        private Random rand = new Random();
+
         private bool alUpp;
         private bool alLow;
         private bool alDig;
@@ -28,6 +30,7 @@ namespace CryptoKey
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ancestor = ancestor;
             this.bl = bl;
+            Console.WriteLine(this.generateCryptoKey()) ;
             
         }
 
@@ -222,6 +225,22 @@ namespace CryptoKey
             toolTip1.ShowAlways = true;
             toolTip1.Show("Großbuchstabe, Kleinbuchstabe, Ziffer, mindestens 8 Stellen lang", tfpassword);
 
+        }
+
+        public string generateCryptoKey()
+        {
+            //33 - 126
+
+            string key = "";
+            for(int i = 0; i < 15; i++)
+            {
+                char c = (char)rand.Next(33, 126);
+                key += c;
+
+
+            }
+
+            return key;
         }
     }
 }
