@@ -36,7 +36,7 @@
             // 
             // lbtitle
             // 
-            this.lbtitle.BackColor = System.Drawing.Color.Gainsboro;
+            this.lbtitle.BackColor = System.Drawing.Color.Silver;
             this.lbtitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.lbtitle.Location = new System.Drawing.Point(-25, -1);

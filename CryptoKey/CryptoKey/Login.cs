@@ -46,22 +46,8 @@ namespace CryptoKey
             }
             catch (Exception ex)
             {
-                if (ex.Message.Equals("Register"))
-                {
-                    MessageBox2 mb = new MessageBox2("Dieser Username/Diese Email ist noch nicht vorhanden, möchten Sie stattdessen einen neuen Account hinzufügen?", Color.FromArgb(0, 51, 204), false, false);
-                    mb.setVisible(true);
-                    if (mb.Ok)
-                    {
-                        Register r = new Register(this, bl);
-                        r.setVisible(true);
-                        this.setVisible(false);
-                    }
-                } else
-                {
-                    MessageBox1 mb = new MessageBox1(ex.Message, Color.FromArgb(0, 51, 204), false, false);
-                    mb.setVisible(true);
-                }
-
+                MessageBox1 mb = new MessageBox1(ex.Message, Color.FromArgb(0, 51, 204), false, false);
+                mb.setVisible(true);
             }
         }
 
