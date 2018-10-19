@@ -60,10 +60,10 @@ namespace CryptoKey
                 }
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                if(German)
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if(German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
             }
         }
 
@@ -88,9 +88,10 @@ namespace CryptoKey
                 }
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
             }
         }
 
@@ -112,9 +113,10 @@ namespace CryptoKey
                     con.Close();
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
             }
         }
 
@@ -136,9 +138,10 @@ namespace CryptoKey
                 }
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
             }
         }
 
@@ -168,9 +171,10 @@ namespace CryptoKey
                 con.Close();
                 accounts.Clear();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
 
             }
         }
@@ -221,19 +225,22 @@ namespace CryptoKey
                         }
                         else
                         {
-                            throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
+                            if(German) throw new Exception("Passwort stimmt nicht mit dem Username/Email überein!");
+                            throw new Exception("Password doesn't match Username/Email");
                         }
                     }
                     else
                     {
-                        throw new Exception("Username / Email konnte nicht erkannt werden!");
+                        if(German)throw new Exception("Username / Email konnte nicht erkannt werden!");
+                        throw new Exception("Username/Email not found!");
                     }
                     con.Close();
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
             }
         }
 
@@ -274,9 +281,10 @@ namespace CryptoKey
                 con.Close();
                 update(list);
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
 
             }
         }
@@ -304,14 +312,24 @@ namespace CryptoKey
                     var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        if (email.Equals(reader["email"])) throw new Exception("Email ist bereits vergeben, wollen Sie stattdessen ihr Passwort zurücksetzen?");
-                        else throw new Exception("Dieser Username ist leider schon vergeben!");
+                        if (email.Equals(reader["email"]))
+                        {
+                            if(German) throw new Exception("Email ist bereits vergeben, wollen Sie stattdessen ihr Passwort zurücksetzen?");
+                            throw new Exception("Email is already used, do you want to reset your password instead?");
+                        }
+                        else
+                        {
+                            if(German) throw new Exception("Dieser Username ist leider schon vergeben!");
+                            throw new Exception("This username is already used!");
+                        }
                     }
                     con.Close();
 
                 }
                 cryptokey = EncryptionHelper.generateCryptoKey();
-                comStr = "INSERT INTO UserTable VALUES('" + username + "','" + EncryptionHelper.Encrypt(password,cryptokey) + "','" + email + "',0,NULL,0,1,'"+cryptokey+"')";
+                char lan = '0';
+                if (German) lan = '1';
+                comStr = "INSERT INTO UserTable VALUES('" + username + "','" + EncryptionHelper.Encrypt(password,cryptokey) + "','" + email + "',0,NULL,0,"+lan+",'"+cryptokey+"')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -320,9 +338,10 @@ namespace CryptoKey
 
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
 
             }
         }

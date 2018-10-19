@@ -32,18 +32,13 @@ namespace CryptoKey
             this.ancestor = ancestor;
             this.bl = bl;
             CultureInfo ci = CultureInfo.InstalledUICulture;
-            if (ci.ThreeLetterWindowsLanguageName.Equals("DEU"))
-            {
-                bl.German = true;
-            }
-            else
+            if (!ci.ThreeLetterWindowsLanguageName.Equals("DEU"))
             {
                 label2.Text = "Username";
                 label3.Text = "Password";
                 label4.Text = "Password";
                 label5.Text = "Register";
             }
-            Console.WriteLine(this.generateCryptoKey()) ;
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -239,20 +234,5 @@ namespace CryptoKey
 
         }
 
-        public string generateCryptoKey()
-        {
-            //33 - 126
-
-            string key = "";
-            for(int i = 0; i < 15; i++)
-            {
-                char c = (char)rand.Next(33, 126);
-                key += c;
-
-
-            }
-
-            return key;
-        }
     }
 }
