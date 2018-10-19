@@ -5,9 +5,13 @@ using System;
 
 public static class EncryptionHelper
 {
-    public static string Encrypt(string clearText)
+    private static Random rand = new Random();
+    
+    public static string Encrypt(string clearText , string EncryptionKey)
     {
-        string EncryptionKey = "Zebrahuf_88";
+        
+
+
         byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
         using (Aes encryptor = Aes.Create())
         {
@@ -26,9 +30,10 @@ public static class EncryptionHelper
         }
         return clearText;
     }
-    public static string Decrypt(string cipherText)
+    public static string Decrypt(string cipherText, string EncryptionKey)
     {
-        string EncryptionKey = "Zebrahuf_88";
+       
+        
         cipherText = cipherText.Replace(" ", "+");
         byte[] cipherBytes = Convert.FromBase64String(cipherText);
         using (Aes encryptor = Aes.Create())
@@ -47,5 +52,21 @@ public static class EncryptionHelper
             }
         }
         return cipherText;
+    }
+
+    public static string generateCryptoKey()
+    {
+        //33 - 126
+
+        string key = "";
+        for (int i = 0; i < 15; i++)
+        {
+            char c = (char)rand.Next(33, 126);
+            key += c;
+
+
+        }
+
+        return key;
     }
 }

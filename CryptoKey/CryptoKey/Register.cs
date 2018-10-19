@@ -16,6 +16,8 @@ namespace CryptoKey
     {
         private Login ancestor;
         private CryptoKeyBL bl;
+        private Random rand = new Random();
+
         private bool alUpp;
         private bool alLow;
         private bool alDig;
@@ -41,6 +43,7 @@ namespace CryptoKey
                 label4.Text = "Password";
                 label5.Text = "Register";
             }
+            Console.WriteLine(this.generateCryptoKey()) ;
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -70,7 +73,7 @@ namespace CryptoKey
 
                         if (this.samePasswords(password, password2))
                         {
-                            bl.Register(tfUsername.Text, tfEmail.Text, EncryptionHelper.Encrypt(tfpassword.Text));
+                            bl.Register(tfUsername.Text, tfEmail.Text, tfpassword.Text);
                             MessageBox.Show("Ihr Account wurde erfolgreich erstellt");
                             this.setVisible(false);
                             ancestor.setVisible(true);
@@ -234,6 +237,22 @@ namespace CryptoKey
             toolTip1.ShowAlways = true;
             toolTip1.Show("Großbuchstabe, Kleinbuchstabe, Ziffer, mindestens 8 Stellen lang", tfpassword);
 
+        }
+
+        public string generateCryptoKey()
+        {
+            //33 - 126
+
+            string key = "";
+            for(int i = 0; i < 15; i++)
+            {
+                char c = (char)rand.Next(33, 126);
+                key += c;
+
+
+            }
+
+            return key;
         }
     }
 }

@@ -39,6 +39,7 @@ namespace CryptoKey
         public Color Color { get; set; }
         public bool Theme { get; set; }
         public bool German { get; set; }
+        public string cryptokey { get; set; }
 
         public void add(Account acc, ListBox list)
         {
@@ -50,7 +51,7 @@ namespace CryptoKey
             {
 
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
+                string comStr = comStr = "INSERT INTO AccountTable (username,title,email,onlineuser,password,url,priority,marked,deleted) VALUES ('" + Username + "','" + acc.Title + "','" + acc.Email + "','" + acc.Onlineuser + "','" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "','" + acc.Url + "','" + acc.Priority + "','0','0')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -78,7 +79,7 @@ namespace CryptoKey
                 char m = '0';
                 if (acc.marked) m = '1';
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + EncryptionHelper.Encrypt(acc.Password) + "', url = '" + acc.Url + "', priority = '" + acc.Priority + "', marked = '" + m + "' WHERE id = '" + acc.id + "';";
+                string comStr = "UPDATE AccountTable SET title = '" + acc.Title + "', email = '" + acc.Email + "', onlineuser = '" + acc.Onlineuser + "', password = '" + EncryptionHelper.Encrypt(acc.Password,cryptokey) + "', url = '" + acc.Url + "', priority = '" + acc.Priority + "', marked = '" + m + "' WHERE id = '" + acc.id + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -194,7 +195,8 @@ namespace CryptoKey
                     var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        if (EncryptionHelper.Decrypt(reader["password"].ToString()).Equals(password))
+                        cryptokey = reader["cryptokey"].ToString();
+                        if (EncryptionHelper.Decrypt(reader["password"].ToString(),cryptokey).Equals(password))
                         {
                             if (reader["online"].ToString().Equals("1")) throw new Exception("Sie sind bereits an einem anderen Gerät angemeldet!");
                             Username = reader["username"].ToString();
@@ -258,7 +260,7 @@ namespace CryptoKey
                             id = Convert.ToInt32(reader["id"]),
                             Email = reader["email"].ToString(),
                             Onlineuser = reader["onlineuser"].ToString(),
-                            Password = EncryptionHelper.Encrypt(reader["password"].ToString()),
+                            Password = EncryptionHelper.Encrypt(reader["password"].ToString(),cryptokey),
                             Priority = reader["priority"].ToString()[0],
                             Title = reader["title"].ToString(),
                             Url = reader["url"].ToString(),
@@ -308,7 +310,8 @@ namespace CryptoKey
                     con.Close();
 
                 }
-                comStr = "INSERT INTO UserTable VALUES('" + username + "','" + password + "','" + email + "',0,NULL,0,1);";
+                cryptokey = EncryptionHelper.generateCryptoKey();
+                comStr = "INSERT INTO UserTable VALUES('" + username + "','" + EncryptionHelper.Encrypt(password,cryptokey) + "','" + email + "',0,NULL,0,1,'"+cryptokey+"')";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
