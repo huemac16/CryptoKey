@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,15 @@ namespace CryptoKey
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            CultureInfo ci = CultureInfo.InstalledUICulture;
+            if (ci.ThreeLetterWindowsLanguageName.Equals("DEU"))
+            {
+                bl.German = true;
+            } else
+            {
+                lbUsername.Text = "Username";
+                lbPassword.Text = "Password";
+            }
         }
 
 

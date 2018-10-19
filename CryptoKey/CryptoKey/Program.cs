@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,8 +19,6 @@ namespace CryptoKey
             int S_width = screen.Bounds.Width;
             int S_height = screen.Bounds.Height;
             Console.WriteLine("{0}x{1}" , S_width, S_height);
-
-   
 
 
             Application.EnableVisualStyles();

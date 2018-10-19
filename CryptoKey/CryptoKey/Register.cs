@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,18 @@ namespace CryptoKey
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ancestor = ancestor;
             this.bl = bl;
-            
+            CultureInfo ci = CultureInfo.InstalledUICulture;
+            if (ci.ThreeLetterWindowsLanguageName.Equals("DEU"))
+            {
+                bl.German = true;
+            }
+            else
+            {
+                label2.Text = "Username";
+                label3.Text = "Password";
+                label4.Text = "Password";
+                label5.Text = "Register";
+            }
         }
 
         private void btCancel_Click(object sender, EventArgs e)

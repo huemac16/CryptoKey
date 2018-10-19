@@ -61,6 +61,7 @@ namespace CryptoKey
             }
             catch (SqlException ex)
             {
+                if(German)
                 throw new Exception("Fehler beim Verbinden zur Datenbank!" + ex.Message + ex.Source);
             }
         }
@@ -223,7 +224,7 @@ namespace CryptoKey
                     }
                     else
                     {
-                        throw new Exception("Register");
+                        throw new Exception("Username / Email konnte nicht erkannt werden!");
                     }
                     con.Close();
                 }
