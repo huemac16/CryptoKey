@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tfEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,11 +38,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tfPassword2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pnBild = new System.Windows.Forms.Panel();
             this.btCancel = new System.Windows.Forms.Button();
             this.btRegister = new System.Windows.Forms.Button();
             this.passwordProgressBar = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnback = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -96,6 +98,7 @@
             this.tfpassword.TabIndex = 5;
             this.tfpassword.UseSystemPasswordChar = true;
             this.tfpassword.TextChanged += new System.EventHandler(this.textChanged);
+            this.tfpassword.MouseHover += new System.EventHandler(this.hover);
             // 
             // label4
             // 
@@ -123,14 +126,6 @@
             this.label5.Size = new System.Drawing.Size(166, 43);
             this.label5.TabIndex = 10;
             this.label5.Text = "Registrieren";
-            // 
-            // pnBild
-            // 
-            this.pnBild.BackgroundImage = global::CryptoKey.Properties.Resources.bildRegister;
-            this.pnBild.Location = new System.Drawing.Point(0, -1);
-            this.pnBild.Name = "pnBild";
-            this.pnBild.Size = new System.Drawing.Size(329, 544);
-            this.pnBild.TabIndex = 11;
             // 
             // btCancel
             // 
@@ -174,14 +169,22 @@
             this.pnback.Size = new System.Drawing.Size(333, 512);
             this.pnback.TabIndex = 13;
             // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::CryptoKey.Properties.Resources.bildRegister;
+            this.panel1.Location = new System.Drawing.Point(-4, -4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(325, 548);
+            this.panel1.TabIndex = 14;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(668, 536);
+            this.ClientSize = new System.Drawing.Size(665, 537);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.passwordProgressBar);
-            this.Controls.Add(this.pnBild);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btRegister);
@@ -215,8 +218,9 @@
         private System.Windows.Forms.Button btRegister;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel pnBild;
         private System.Windows.Forms.ProgressBar passwordProgressBar;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel pnback;
+        private System.Windows.Forms.Panel panel1;
     }
 }

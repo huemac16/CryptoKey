@@ -30,10 +30,9 @@ namespace CryptoKey
         private void btRegister_Click(object sender, EventArgs e)
         {
             Register r = new Register(this, bl);
-            
-            r.setVisible(true);
             this.setVisible(false);
-
+            r.setVisible(true);
+           
         }
 
         private void btLogin_Click(object sender, EventArgs e)
