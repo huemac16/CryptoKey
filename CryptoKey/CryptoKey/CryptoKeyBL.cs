@@ -64,6 +64,52 @@ namespace CryptoKey
             }
         }
 
+        public void changeUserTheme(bool darktheme)
+        {
+            Theme = darktheme;
+            char theme = '0';
+            if (darktheme) theme = '1';
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE UserTable SET theme = '" + theme + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
+            }
+        }
+
+        public void changeUserLanguage(bool german)
+        {
+            German = german;
+            char lan = '0';
+            if (german) lan = '1';
+            try
+            {
+                SqlConnection con = new SqlConnection(conStrSQL);
+                string comStr = "UPDATE UserTable SET german = '" + german + "';";
+                using (SqlCommand cmd = new SqlCommand(comStr, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                if (German) throw new Exception("Fehler beim Verbinden zur Datenbank!\n Versuchen Sie es in einer halben Stunde erneut, wenn Sie sich bis dahin noch immer nicht anmelden können, schreiben Sie ein Email an: cryptokey.pwmanager@gmail.com");
+                throw new Exception("An error accured while trying to connect to the database!\n Try to connect again in 30 minutes, if it won't work then contact us at: cryptokey.pwmanager@gmail.com");
+            }
+        }
+
         public void add(Account acc, ListBox list)
         {
             acc.id = getNewID();
@@ -173,9 +219,9 @@ namespace CryptoKey
             int sel = list.SelectedIndex;
             list.BeginUpdate();
             list.Items.Clear();
-            foreach (Account acc in filtered)
+            for (int i = 0; i<filtered.Count; i++)
             {
-                list.Items.Add(acc.ToString());
+                list.Items.Add(filtered[i].ToString());              
             }
             list.EndUpdate();
         }

@@ -72,5 +72,43 @@ namespace CryptoKey
             
             this.Dispose();
         }
+
+        private void LoginOnEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    bl.Login(tfUsername.Text, tfPassword.Text);
+                    CryptoKeyGUI window = new CryptoKeyGUI(this, bl);
+                    this.setVisible(false);
+                    window.setVisible(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox1 mb = new MessageBox1(ex.Message, Color.FromArgb(0, 51, 204), false, false);
+                    mb.setVisible(true);
+                }
+            }
+        }
+
+        private void LoginOnEnter1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    bl.Login(tfUsername.Text, tfPassword.Text);
+                    CryptoKeyGUI window = new CryptoKeyGUI(this, bl);
+                    this.setVisible(false);
+                    window.setVisible(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox1 mb = new MessageBox1(ex.Message, Color.FromArgb(0, 51, 204), false, false);
+                    mb.setVisible(true);
+                }
+            }
+        }
     }
 }
