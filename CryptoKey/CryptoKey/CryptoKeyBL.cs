@@ -45,11 +45,11 @@ namespace CryptoKey
         public void changeUserColor(Color col)
         {
             Color = col;
-            string colStr = col.R + "," + col.G + "," + col.B + ",";
+            string colStr = col.R + "," + col.G + "," + col.B;
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "UPDATE UserTable SET color = '" + colStr + "';";
+                string comStr = "UPDATE UserTable SET color = '" + colStr + "' WHERE username = '"+Username+"';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -72,7 +72,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "UPDATE UserTable SET theme = '" + theme + "';";
+                string comStr = "UPDATE UserTable SET theme = '"+theme+"' WHERE username = '" + Username + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();
@@ -95,7 +95,7 @@ namespace CryptoKey
             try
             {
                 SqlConnection con = new SqlConnection(conStrSQL);
-                string comStr = "UPDATE UserTable SET german = '" + german + "';";
+                string comStr = "UPDATE UserTable SET german = '" + lan + "' WHERE username = '" + Username + "';";
                 using (SqlCommand cmd = new SqlCommand(comStr, con))
                 {
                     con.Open();

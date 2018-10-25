@@ -37,9 +37,18 @@ namespace CryptoKey
 
         private void btsave_Click(object sender, EventArgs e)
         {
-            bl.changeUserColor(col);
-            bl.changeUserLanguage(german);
-            bl.changeUserTheme(darktheme);
+            try
+            {
+                bl.changeUserColor(col);
+                bl.changeUserLanguage(german);
+                bl.changeUserTheme(darktheme);
+                this.Dispose();
+            } catch(Exception ex)
+            {
+                MessageBox1 msg = new MessageBox1(ex.Message, bl.Color, bl.Theme, bl.German);
+                msg.setVisible(true);
+            }
+
         }
 
         private void btCancel_Click(object sender, EventArgs e)
