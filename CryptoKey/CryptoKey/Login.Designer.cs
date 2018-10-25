@@ -33,9 +33,9 @@
             this.lbPassword = new System.Windows.Forms.Label();
             this.tfPassword = new System.Windows.Forms.TextBox();
             this.paBackground = new System.Windows.Forms.Panel();
+            this.lnLogIn = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.paDes = new System.Windows.Forms.Panel();
-            this.lnLogIn = new System.Windows.Forms.Label();
             this.btRegister = new System.Windows.Forms.Button();
             this.btLogin = new System.Windows.Forms.Button();
             this.paBackground.SuspendLayout();
@@ -111,6 +111,17 @@
             this.paBackground.Size = new System.Drawing.Size(1364, 787);
             this.paBackground.TabIndex = 7;
             // 
+            // lnLogIn
+            // 
+            this.lnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnLogIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.lnLogIn.Location = new System.Drawing.Point(890, 40);
+            this.lnLogIn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lnLogIn.Name = "lnLogIn";
+            this.lnLogIn.Size = new System.Drawing.Size(320, 88);
+            this.lnLogIn.TabIndex = 7;
+            this.lnLogIn.Text = "Log In";
+            // 
             // pbClose
             // 
             this.pbClose.BackColor = System.Drawing.Color.Transparent;
@@ -134,17 +145,6 @@
             this.paDes.Name = "paDes";
             this.paDes.Size = new System.Drawing.Size(672, 781);
             this.paDes.TabIndex = 8;
-            // 
-            // lnLogIn
-            // 
-            this.lnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnLogIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.lnLogIn.Location = new System.Drawing.Point(890, 40);
-            this.lnLogIn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lnLogIn.Name = "lnLogIn";
-            this.lnLogIn.Size = new System.Drawing.Size(320, 88);
-            this.lnLogIn.TabIndex = 7;
-            this.lnLogIn.Text = "Log In";
             // 
             // btRegister
             // 

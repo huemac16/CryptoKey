@@ -101,5 +101,11 @@ namespace CryptoKey
         {
             bl.InitAccounts(AccountList, "title ASC");
         }
+
+        private void btsettings_Click(object sender, EventArgs e)
+        {
+            SettingsGUI set = new SettingsGUI(bl);
+            set.ShowDialog();
+        }
     }
 }

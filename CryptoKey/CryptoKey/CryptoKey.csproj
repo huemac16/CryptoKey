@@ -80,6 +80,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsGUI.Designer.cs">
+      <DependentUpon>SettingsGUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CryptoKeyGUI.resx">
       <DependentUpon>CryptoKeyGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsGUI.resx">
+      <DependentUpon>SettingsGUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
